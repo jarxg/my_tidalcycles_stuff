@@ -1,0 +1,85 @@
+cps (125/60/4)
+
+hush
+
+d1
+-- $ slow 2
+-- $ gap 2
+-- $ stut 2 0.5 0.75
+$ sound "~ sd"
+# slow 3 (cutoff "< 3000 6000 > < 1000 4000 >")
+# legato 0.1
+# gain 0.75
+# room 0.2
+# orbit 1
+
+d1 silence
+
+d2
+-- $ slow 2
+$ stut 3 0.5 1.5
+$ n "12 ~ 15 ~ 8 ~ 12 5"
+# sound "supersquare*8"
+# crush "{4 8 2 8 3}%4"
+# slow 3 (cutoff (sine*500))
+# gain 0.8
+# legato 0.20
+# orbit 2
+
+d2 silence
+
+d3
+$ fast 2
+$ stack [
+sound "808bd:6",
+sound "[tech tech*3?]*2"
+]
+# gain 1
+# legato 0.15
+# cutoff 200
+# orbit 3
+
+d3 silence
+
+d4
+$ slow 8
+$ shuffle 16
+$ striate 2
+$ stut 12 0.5 60
+$ n (run 8)
+# sound "glitch*8"
+# legato 0.015
+# gain 0.8
+# cutoff (sine*2000)
+# room 0.3
+# orbit 4
+
+d4 silence
+
+d5
+$ slow 2
+$ striate 2
+$ stut 4 0.25 1.5
+$ n "12 ~ ~ 5 ~ 12 5 20 "
+# s "supersaw"
+-- # legato 0.25
+# vowel "< i [< o < i o > >] >"
+# slow 5 (legato sine)
+# slow 3 (cutoff 120)
+# gain 0.75
+# room 0.3
+# orbit 5
+
+d5 silence
+
+d6
+$ slow 32
+-- $ shuffle 0
+$ striate 2
+$ gap 15
+$ stut 22 0.5 1
+$ n "1 2 3 4"
+# legato 0.25
+# s "numbers"
+# gain 0.75
+# orbit 6

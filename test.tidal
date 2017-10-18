@@ -1,0 +1,5 @@
+cps (95/60/4)
+
+hush
+
+d1 $ n "<[c4, e4, g4, b4] [c4, f4, g4, c5]>" # s "supersquare" # gain "0.7"

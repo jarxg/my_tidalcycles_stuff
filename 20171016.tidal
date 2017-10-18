@@ -1,0 +1,69 @@
+cps (95/60/4)
+
+hush
+
+d1
+$ slow 2
+-- $ every 3 palindrome
+$ stut 4 0.5 0.5
+$ gap 2
+$ jux rev
+$ sound "~ arpy ~ [arpy ~ arpy?]"
+# vowel "i e [i [a < o i >]]"
+# slow 3 (crush "8 [4 8 8 4]]")
+# gain 0.85
+# legato 0.25
+# speed 1
+# room 0.2
+# size 0.8
+# orbit 0
+
+d1 silence
+
+d2
+$ degrade
+$ stut 4 0.5 0.75
+$ sound "808bd:3 ~"
+# crush 1
+# gain 0.3
+# room 0.2
+# orbit 1
+
+d2 silence
+
+d3
+$ slow 2
+$ gap 2
+$ stut 4 0.5 1.5
+$ degrade
+$ sound "[~ kurt:3*2]"
+# legato 0.15
+-- # crush 4
+# slow 1 (vowel "[i] [a, i, i, e] i o i")
+# room 0.5
+# gain 0.9
+# orbit 2
+
+d3 silence
+
+d4
+$ stut 2 0.5 0.5
+$ striate 2
+$ n (run 4)
+# sound "glitch2"
+# room 0.2
+# gain 0.5
+# orbit 3
+
+d4 silence
+
+d5
+-- $ slow 2
+$ n "e2 e2 ~ e2 ~ e2 d3 d3"
+# s "supersaw"
+# gain 0.75
+# room 0.2
+# size 0.6
+# orbit 4
+
+d5 silence

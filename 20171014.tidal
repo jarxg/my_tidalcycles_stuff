@@ -1,0 +1,31 @@
+hush
+
+d3 silence
+
+d1
+-- $ slow 2
+-- $ every 3 (slow 2)
+-- $ stut 4 0.25 1
+$ gap 2
+$ jux (stut 8 0.25 1)
+$ sound "[~ [~ [~ ~]]] [~ [~ [~ kurt:6]]]"
+-- # slow 4 (vowel "a o e")
+-- # slow 8 (crush "5 [4 8 4] 8")
+# gain 0.75
+# legato 0.15
+# room 0.1
+# size 0.5
+# orbit 0
+
+d2
+$ n "1*2"
+# sound "808bd:3*2"
+# orbit 1
+
+d3
+$ slow 2
+$ sound "~ [~ glitch:6*2]"
+# legato "0.75 [0.125 0.05]"
+# room 0.2
+# gain 0.75
+# orbit 2
