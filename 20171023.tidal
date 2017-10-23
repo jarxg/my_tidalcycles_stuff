@@ -1,0 +1,70 @@
+cps (115/60/4)
+
+d1 silence
+
+d2 silence
+
+d3 silence
+
+d4 silence
+
+hush
+
+d1
+$ slow 4
+$ every 3 palindrome
+$ every 2 (jux rev)
+$ striate 2
+$ stut 3 0.25 1.5
+$ n "{5 [5 5] [5 5]}%4 {5 [5 <5 5>] <[5 5] [5 5]>}%4"
+# s "glitch"
+# legato "0.75"
+# speed "1 1 1.5 2 0.5 1 1 1.5"
+# slow 7 (cutoff "[100 500] 75 [[25 500] 75] [500 50 750]")
+# gain "1.5"
+# room "0"
+# orbit 2
+
+d2
+$ n "3 3"
+# s "808bd"
+# cutoff "200"
+# gain "1.5"
+# room "0"
+# orbit "2"
+
+d2 silence
+
+d3
+$ every 2 (jux rev)
+$ every 5 palindrome
+$ slow 2
+$ every 3 (slow 8)
+$ striate 2
+$ stut 3 0.5 0.75
+$ n "[<12 <20 1 8> 15> <11 <20 8> 4> <17 <20 1 8> 15 18>]*8"
+# s "diphone"
+# legato "0.75"
+# fast 7 (cutoff "<[1000 5500] <[525 3500] [5000 825]> [2500 500]> ~")
+# gain "1.25"
+# room "0.25"
+# size "0.5"
+# orbit "3"
+
+d3 silence
+
+d4
+$ striate 2
+$ every 3 palindrome
+$ every 2 (jux rev)
+$ stut 3 0.5 1.25
+$ n (irand 8)
+# s "ade"
+# crush "[7 [6 <3 5> 0] [<4 9> 2 3] 8]*2"
+# legato "0.75"
+# fast 5 (cutoff "<6000 [200 2000]> [5000 <3000 2000>] [[5000 2000] [<5000 1000> 2000]]")
+# room "[0.5 <0.1 0.3> 0.5 <0 0.5>]*2"
+# gain "1"
+# orbit "4"
+
+d4 silence
