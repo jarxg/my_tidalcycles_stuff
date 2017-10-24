@@ -1,7 +1,10 @@
-s.quit;
 s.boot;
+s.quit;
 
-ServerOptions.devices
-Server.default.options.outDevice_("Built-In Output")
-SuperDirt.start
+SuperDirt.start;
+
+ServerOptions.devices;
+Server.default.options.outDevice_("Soundflower (2ch)");
+Server.default.options.outDevice_("Built-in Output");
+
 MethodOverride.printAll

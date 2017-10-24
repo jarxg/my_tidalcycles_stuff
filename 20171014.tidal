@@ -4,7 +4,6 @@ d3 silence
 
 d1
 -- $ slow 2
--- $ every 3 (slow 2)
 -- $ stut 4 0.25 1
 $ gap 2
 $ jux (stut 8 0.25 1)

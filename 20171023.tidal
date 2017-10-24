@@ -12,59 +12,72 @@ hush
 
 d1
 $ slow 4
+$ jux rev
 $ every 3 palindrome
-$ every 2 (jux rev)
+-- $ stut 3 0.25 1.5
 $ striate 2
-$ stut 3 0.25 1.5
-$ n "{5 [5 5] [5 5]}%4 {5 [5 <5 5>] <[5 5] [5 5]>}%4"
-# s "glitch"
+$ n "{3 [1 5] [5 3]}%4 {2 [5 <3 1>] <[2 5] [5 1]>}%4"
+# s "ade invaders"
 # legato "0.75"
-# speed "1 1 1.5 2 0.5 1 1 1.5"
-# slow 7 (cutoff "[100 500] 75 [[25 500] 75] [500 50 750]")
-# gain "1.5"
+# speed "2 [2, 0.5] 1 <[[0.5, 1] 2] [1.5 0.5]>"
+# crush "8 4 [[8, 4] 8] 5 [8, 4]"
+# cutoff "250"
+# gain "1.75"
 # room "0"
-# orbit 2
+
+d1 silence
 
 d2
-$ n "3 3"
+$ n "3 [3 3]"
 # s "808bd"
-# cutoff "200"
-# gain "1.5"
-# room "0"
-# orbit "2"
+# crush "5"
+# cutoff "1000"
+# gain "2"
 
 d2 silence
 
+d5
+$ n"0*12"
+# s "808oh"
+# legato "0.5"
+# speed "1 1 0.5 <1 0.5> 1 <0.5 1> 1 0.5"
+# crush "8 8 4 8 4 8 4 8"
+# cutoff "6500"
+# gain "0.75"
+# orbit "2"
+
+d5 silence
+
 d3
-$ every 2 (jux rev)
-$ every 5 palindrome
-$ slow 2
-$ every 3 (slow 8)
-$ striate 2
-$ stut 3 0.5 0.75
-$ n "[<12 <20 1 8> 15> <11 <20 8> 4> <17 <20 1 8> 15 18>]*8"
-# s "diphone"
-# legato "0.75"
-# fast 7 (cutoff "<[1000 5500] <[525 3500] [5000 825]> [2500 500]> ~")
+$ slow 16
+$ every 4 palindrome
+$ every 2 (|+| slow 2 (speed "<0.5 1> 2 0.5 [1 0.5]"))
+$ jux rev
+-- $ striate 3
+-- $ chop 2
+$ stut 3 0.5 1.5
+$ n "[[<12 <5 24 7> 12> <7 <5 0> 5> <17 <5 0 8> 12 2>]*8, [<12 <5 24 7> 12>, <7 <5 0> 5>]]*8"
+# s "arpy mouth"
+# slow 3 (speed "1 [2 0.5] [1 [2, 0.5]]")
+# slow 4 (legato "[0.5 0.25] [0.75, 0.25]")
+# slow 2 (crush "[8 4] 8 [3, 8] 5")
+# slow 5 (cutoff "{50 [250 75] 250}%4")
 # gain "1.25"
-# room "0.25"
-# size "0.5"
-# orbit "3"
 
 d3 silence
 
 d4
-$ striate 2
-$ every 3 palindrome
-$ every 2 (jux rev)
-$ stut 3 0.5 1.25
-$ n (irand 8)
-# s "ade"
-# crush "[7 [6 <3 5> 0] [<4 9> 2 3] 8]*2"
+$ jux rev
+$ slow 8
+$ striate 6
+$ chop 3
+$ s "mash*8"
+# n (irand 10)
+# crush "4 7 4 3"
 # legato "0.75"
-# fast 5 (cutoff "<6000 [200 2000]> [5000 <3000 2000>] [[5000 2000] [<5000 1000> 2000]]")
-# room "[0.5 <0.1 0.3> 0.5 <0 0.5>]*2"
-# gain "1"
-# orbit "4"
+# cutoff "150"
+# room "[0.5 <0.1 0.3> 0.5 <0 0.5>]*4"
+# orbit "1"
+# gain "1.25"
 
 d4 silence
