@@ -1,0 +1,81 @@
+cps (125/60/4)
+
+hush
+
+-- drm-mchne
+
+do
+    d1 $ n "0*4" # s "bd" # cutoff 500 # gain 1.5
+    d2 $ stut 4 0.25 0.25 $ n "[~ 4 ~ 4]*2" # s "linnhats" # legato 0.22 # cutoff 5500
+    d3 $ stut 3 0.25 1.55 $ n "~ 0 ~ 0" # s "sd" # gain 0.85
+
+do
+    d1 silence
+    d2 silence
+    d3 silence
+
+-- gen-perc
+    -- 808 amencutup dr dr2 future ifdrums jazz sequential tabla tabla2 tech
+
+d4
+-- $ every 3 palindrome
+$ sometimes (jux rev)
+-- $ sometimes (# legato "1")
+$ every 5 (0.5 <~)
+$ every 3 (0.25 <~)
+$ every 4 (0.125 <~)
+$ s "[future(7,16), dr(3,8), tech(7,16,5)]"
+# n (irand 1000)
+# room 0.2
+# orbit 1
+# slow 8 (crush (scale 3 6 sine))
+# slow 16 (cutoff (scale 100 5000 sine))
+
+
+do
+    d4 silence
+    d5 silence
+
+d5
+$ every 3 palindrome
+$ sometimes (jux rev)
+-- $ sometimes (# legato "1")
+$ every 3 (0.5 <~)
+$ every 4 (0.25 <~)
+-- $ every 2 (0.125 <~)
+-- $ striate 2
+$ s "jazz(7,16)"
+# n (irand 1000)
+
+-- msc-stff
+
+d6
+$ jux rev
+$ superimpose (gap 3)
+$ s "pad(6,8,5) glitch(5,8,3)"
+# n (irand 1000)
+# legato "0.5"
+# cutoff "500"
+
+do
+    d6 silence
+    d7 silence
+
+d7
+
+do
+    d7 silence
+    d8 silence
+
+d8
+
+do
+    d8 silence
+    d9 silence
+
+d9
+$ n "e2 e1*8"
+# s "supersaw"
+# slow 24 (legato (scale 1 7 sine / 10))
+# slow 12 (crush (scale 3 6 sine))
+# slow 32 (cutoff (scale 50 1000 sine))

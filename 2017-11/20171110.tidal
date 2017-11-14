@@ -1,0 +1,98 @@
+--- twal01
+--- by @jarxg
+
+cps (135/60/4)
+
+hush
+
+-- drm-mchne
+
+do
+    d1 $ n "3*4" # s "bd" # cutoff 300 # gain 2
+    d2 $ stut 4 0.25 0.25 $ n "[~ 4 ~ 4]*2" # s "linnhats" # legato 0.22 # cutoff 3500 # gain 0.75 # pan sine
+    d3 $ stut 3 0.25 1.55 $ n "~ 0 ~ <0 [0*2]>" # s "sd"
+
+do
+    d1 silence
+    d2 silence
+    d3 silence
+
+-- gen-perc
+-- 808 ab ade amencutup auto dr dr2 feel future ifdrums jazz sequential tabla tabla2 tech
+
+d4
+$ jux rev
+$ s "dr(11,16)?"
+# n (irand 32)
+# legato 1
+# slow 20 (cutoff (scale 5 5000 sine))
+
+do
+    d4 silence
+    d5 silence
+
+d5
+$ every 2 (0.125 <~)
+$ every 3 (0.5 <~)
+$ every 4 (0.25 <~)
+$ sometimes (jux rev)
+$ s "[feel(5,8)?, auto(7,8)?]"
+# n (irand 32)
+# slow 7 (crush (scale 3 7 sine))
+# slow 5 (cutoff (scale 500 5000 sine))
+
+-- bss
+    -- supersquare, supersaw, superpwm, supercomparator
+    -- superchip, supernoise
+
+d6
+-- $ jux rev
+$ n "<[a3(3,8)] a2> d2(5,8)"
+# s "supersaw"
+# legato 1
+# slow 6 (legato (scale 5 10 sine / 10))
+# slow 8 (crush (scale 2 5 sine))
+# slow 4 (cutoff (scale 5 5 sine))
+
+d6 silence
+
+-- msc-stff
+
+d7
+$ fast 2
+$ every 4 (jux (|+| n "8"))
+$ sometimes (jux (|+| n "5"))
+$ stut 3 0.5 0.75
+$ n "<e4 a5> b4 <a5 e5> e5 e5*2 a5 <a4 e5> <e4 a4>"
+# s "superpiano"
+# coarse "[<2 5 4> 2] <4 [5 7]> [2 3 <4 3 8>]"
+# slow 4 (legato (sine / 4 + 0.1))
+# slow 6 (cutoff (sine * 1450 + 50))
+# gain 0.5
+
+do
+    d7 silence
+    d8 silence
+
+d8
+$ slow 2
+$ striate 2
+$ sometimes (jux (|+| n (irand (5*8))))
+$ sometimes (# s "kurt tabla alphabet")
+$ stut 4 0.5 1.05
+$ n "{<5 0> 5 <5 ~> <~ 2 5> <5 0 ~ 3> <5 ~> <~ 2 3> <5 3> <~ 1> <5 0 ~> <5 ~> <3 ~ 4 1 ~>}%8"
+# s "arpy"
+# legato 1
+# slow 2 (cutoff (scale 50 500 sine))
+# gain 1
+
+do
+    d8 silence
+    d9 silence
+
+d9
+-- $ striate 2
+$ n "5 2 0 1"
+# s "numbers"
+# vowel "i o e"
+# cutoff 5
