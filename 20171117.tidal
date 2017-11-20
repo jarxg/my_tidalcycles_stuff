@@ -1,0 +1,52 @@
+
+cps (125/60/4)
+
+hush
+
+d1
+$ n "[c2(11,16), e3(3,8)]"
+# s "supersaw"
+# vowel "i o [i e]"
+# crush (scale 3 6 $ slow 3 sine)
+# cutoff (scale 50 3500 $ slow 7 sine)
+# legato 1
+
+d1
+$ n "[a2(5,8), c3(3,8)]"
+# s "supersaw"
+# crush (scale 3 6 $ slow 9 sine)
+# cutoff (scale 150 1500 $ slow 7 sine)
+# legato 1
+
+
+d1 silence
+
+t2 (anticipateIn 4)
+$ s "bd bd bd bd"
+# cutoff 500
+# legato 1
+# gain 2
+
+d2
+$ jux rev
+$ striate 8
+$ s "breaks125"
+# legato 1
+
+d2 silence
+
+d3
+$ jux rev
+$ stut 3 0.5 1.25
+$ s "homedepot(5,8)"
+# n (irand 150)
+# legato (slow 5 sine)
+
+d3 silence
+
+d4
+$ s "bd bd bd bd"
+# cutoff 1500
+# gain 2
+
+d4 silence
