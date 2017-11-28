@@ -1,0 +1,100 @@
+cps (120/60/4)
+
+hush
+
+t1 anticipate
+$ jux rev
+$ degrade
+$ whenmod 10 8 (palindrome)
+$ whenmod 13 17 (|+| n "24")
+$ whenmod 15 16 (|+| n "12")
+$ whenmod 16 15 (|-| n "12")
+$ whenmod 17 13 (|-| n "24")
+-- $ n "[e3 <fs3 ~> as4 <~ cs4 ~> e4 <gs4 ~> <fs4 ~ fs4> b5]*2"
+-- $ n "[as3 <es4 ~> e5 <~ cs4 ~> e4 <gs5 ~> <fs4 ~ fs4> b5]*2"
+-- $ n "[e5(5,8)]*2"
+-- $ n "[e5(5,8)]/4"
+$ n ""
+# s "supersaw"
+-- # legato (scale 0.25 0.75 $ slow 17 sine)
+-- # crush (scale 2 6 $ slow 13 sine)
+# cutoff (scale 500 5000 $ slow 15 sine)
+-- # hcutoff (scale 0 2500 $ slow 13 tri)
+-- # resonance (slow 23 $ sine)
+# gain 1.5
+
+d1 silence
+
+t2 anticipate
+-- $ jux rev
+-- $ sometimes (striate 2)
+$ stack [
+    -- s "super808*4"
+    -- s "[~ supersnare]*2",
+    -- s "superhat(11,16)"
+]
+-- # crush 4
+-- # cutoff 4500
+# gain 2
+
+d2 silence
+
+d3
+$ stut 3 0.5 0.75
+-- $ n "[[0 0] <1 0 ~ 1> <1 ~ 0 ~ 1 0> [0 1 <0 ~ 1 0>] [0 ~ 1]]/2"
+-- $ n "[[0 0] <1 0 ~ 1> <1 ~ 0 ~ 1 0> [0 1 <0 ~ 1 0>] [0 ~ 1]]*2"
+$ n ""
+# s "numbers"
+# legato (scale 0.5 1.5 $ slow 5 tri)
+# pan (slow 3 sine)
+# gain 1.5
+
+t4 anticipate
+$ jux rev
+$ degrade
+-- $ n "[7 3] ~ <5 6 ~ 1> <8 ~ 2 ~ 9 4> ~]/8"
+-- $ n ""
+# s "birds"
+-- # cutoff 5000
+# pan rand
+# gain 1.5
+# orbit 1
+
+t7 anticipate
+-- $ jux rev
+-- $ n "[[<f4 f5> <c5 g6 c4> <~ c4> f6 ~ a4 <e4 g4> <~ a4>, <~ c4> a4 <e4 <f4 f5> <c5 g6 c4> g4> <~ a4> f6 ~]]/8"
+$ n ""
+# s "supersaw"
+# attack 4 # decay 4 # sustain 8 # release 8
+# cutoff (scale 5 200 $ slow 32 sine)
+# room 0.75
+# orbit 1
+
+t5 anticipate
+$ sometimes (jux rev)
+$ sometimes (|+| n "12")
+$ sometimes (|-| n "24")
+-- $ n "e3*2 ~ fs3(3,4) e4"
+-- $ n "e3*2 ~ ~ e4"
+$ n ""
+# sound "superchip"
+# cutoff (scale 4000 8000 $ slow 17 sine)
+# gain 1
+
+d5 silence
+
+d6
+$ jux rev
+$ every 4 palindrome
+$ sometimes (striate 4)
+$ sometimes (|+| n "5")
+$ sometimes (|+| n "10")
+$ sometimes (|-| n "5")
+$ sometimes (|-| n "10")
+-- $ n (run 16)
+$ n ""
+# s "amencutup"
+# legato 1
+# gain 2
+
+d6 silence

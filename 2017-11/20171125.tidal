@@ -1,0 +1,56 @@
+rendered as "SC_171125_044232.aiff"
+
+cps (145/60/4)
+
+hush
+
+t1 anticipate
+$ slow 4
+$ whenmod 24 17 (iter 4)
+$ sometimes (|+| n "13")
+$ sometimes (jux rev)
+$ whenmod 10 3 (jux (# speed "-1"))
+$ n (run 32)
+# s "srg"
+# pan rand
+-- # legato 0.25
+# speed (scale 0 2 $ slow 5 sine)
+# legato (scale 0.01 0.09 $ slow 24 sine)
+# cutoff (scale 0 5 $ slow 25 sine)
+
+d1 silence
+
+t2 clutch
+$ sometimes (jux (iter 32))
+$ whenmod 10 5 (|+| n "15")
+$ whenmod 7 3 (|+| n "25")
+$ whenmod 25 14 (|+| n "5")
+$ every 7 palindrome
+$ whenmod 9 3 (jux (rev))
+$ sometimes (|+| speed 2.5)
+$ stack [
+    s "glitch:5(3,8)",
+    s "[srg:3(5,8), srg:4(5,8)]",
+    s "<mdm:6 ~> mdm:1 mdm:5(3,8)",
+    s "{<~ mdm:7 ~> mdm:34 <<mdm:26 ~ mdm:15> <mdm:13 ~ mdm:2>}%8",
+    s "<~ mdm:14 ~> ~ mdm:0 < ~ <mdm:8 ~ mdm:22> ~>"
+]
+# attack 8
+# sustain 8
+# decay 16
+# release 16
+-- # legato (scale 0.25 50 $ slow 10 sine)
+# speed (scale 0 1 $ slow 21 sine)
+# cutoff (scale 0 5 $ slow 32 sine)
+# resonance (scale 0 0.25 $ slow 45 sine)
+# crush (scale 3 7 $ slow 8 sine)
+
+d2 silence
+
+do
+    d3 $ n "0*4" # s "super808"
+    d4 $ n "0*16" # s "superhat" # legato (scale 0 1 $ rand) # cutoff (scale 500 2500 $ slow 8 sine) # pan rand
+
+do
+    d3 silence
+    d4 silence

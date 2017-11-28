@@ -1,5 +1,15 @@
+s.options.memSize = 524288
+s.options.outDevice = "Soundflower (2ch)";
+s.options.outDevice = "Built-in Output";
+s.options.outDevice = "Scarlett 2i2";
+
 s.boot;
 s.quit;
+
+s.record;
+s.stopRecording;
+
+s.makeWindow;
 
 SuperDirt.start;
 

@@ -1,0 +1,38 @@
+cps (88/60/4)
+
+hush
+
+t1 clutch
+$ degrade
+$ jux rev
+$ sometimes (|+| speed 1)
+$ n "[<0 31>, <5 2>]"
+# s "mdm"
+# begin (slow 8 sine)
+# attack 4 # decay 4 # sustain 4 # release 4
+# legato 1
+# speed (scale 0 2 $ slow 88 sine)
+# cutoff 500
+
+d1 silence
+
+t2 (anticipateIn 31)
+$ degrade
+$ whenmod 9 2 (jux rev)
+$ sometimes (|+| speed 1)
+$ n (irand 32)
+# s "mdm"
+# attack 2 # decay 2 # sustain 2 # release 2
+# legato (scale 0 1 $ slow 23 sine)
+# speed (scale 0 1 $ slow 17 sine)
+# cutoff 500
+
+t3 (anticipateIn 16)
+$ stut 3 0.5 1.25
+$ jux rev
+$ n "0(3,8)"
+# s "super808"
+# cutoff 400
+# gain 1.25
+
+d3 silence

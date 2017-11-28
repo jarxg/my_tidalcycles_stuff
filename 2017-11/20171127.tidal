@@ -1,0 +1,61 @@
+cps (90/60/4)
+
+hush
+
+t1 clutch
+-- $ whenmod 9 5 (jux (iter 4))
+-- $ whenmod 10 3 (0.0125 <~)
+-- $ every 4 palindrome
+-- $ sometimes (stut 3 0.5 0.75)
+$ stack [
+    n "0 ~ [~ 0] ~ 0 0 ~ ~"
+    -- n "~ ~ 1 ~ ~ ~ 1 ~"
+    -- n "2(13,16)"
+    -- n "~ ~ ~ 3 ~ <4 3> ~ 3" --
+]
+# s "dr110"
+
+d1 silence
+
+d2 silence
+
+t2 clutch
+$ degrade
+$ sometimes (|+| speed 1 )
+$ sometimes (|-| speed 1 )
+$ sometimes (iter 4)
+$ jux rev
+$ s "~"
+# n (irand 24)
+-- # legato (scale 0.1 0.9 $ slow 25 sine)
+-- # speed (scale 0 1 $ slow 14 sine)
+-- # cutoff (scale 500 1500 $ slow 17 sine)
+# cutoff (scale 1000 2000 $ slow 10 sine)
+
+t3 (anticipateIn 8)
+$ degrade
+$ n "5 ~ (5 5) ~ ~ ~ ~ (5 5)"
+# s "glitch"
+# legato 1
+-- # legato (scale 0 1 $ slow 11 sine)
+-- # speed (scale 0 2 $ slow 6 rand)
+# cutoff 4500
+
+d3 silence
+
+t4 anticipate
+$ jux rev
+$ sometimes (|-| speed 1)
+$ s "kurt"
+# up "~"
+# vowel "i o i e i i"
+# crush 6
+# cutoff (scale 500 5000 $ slow 4 sine)
+
+do
+    t5 anticipate $ n "~" # s "super808" # cutoff 400
+    t6 anticipate $ n "0(3,8)" # s "superhat" # cutoff (scale 2500 5000 $ slow 8 sine) # legato (scale 0.05 0.25 $ slow 16 sine) # pan rand
+
+do
+    d5 silence
+    d6 silence
