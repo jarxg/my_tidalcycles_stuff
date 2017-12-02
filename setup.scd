@@ -1,20 +1,14 @@
-s.options.memSize = 524288
+ServerOptions.devices;
 s.options.outDevice = "Soundflower (2ch)";
 s.options.outDevice = "Built-in Output";
 s.options.outDevice = "Scarlett 2i2";
 
+s.recSampleFormat = "int16";
+s.recHeaderFormat = "wav";
+
 s.boot;
+SuperDirt.start;
 s.quit;
 
 s.record;
 s.stopRecording;
-
-s.makeWindow;
-
-SuperDirt.start;
-
-ServerOptions.devices;
-
-Server.default.options.outDevice_("Soundflower (2ch)");
-Server.default.options.outDevice_("Built-in Output");
-Server.default.options.outDevice_("Scarlett 2i2");
