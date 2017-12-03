@@ -1,0 +1,109 @@
+-- 20171016.tidal / faxt_abt33.tidal
+-- created: 2017-10-16
+-- modified: 2017-12-3
+-- by @jarxg
+
+cps (95/60/4)
+
+hush
+
+t1 (clutchIn 4)
+-- $ slow 2
+$ sometimes palindrome
+$ sometimes (jux rev)
+$ whenmod 18 7 (iter 2)
+$ stack [
+    slow 2
+        $ whenmod 9 4 (jux (iter 5))
+        $ whenmod 11 4 (jux (stut 4 0.5 0.5))
+        $ sometimes (|+| cutoff 500)
+        $ stut 4 0.5 0.5
+        $ gap 2
+        $ jux rev
+        $ sound "~ arpy ~ [arpy ~ arpy?]"
+        # attack 2 # decay 2 # sustain 1 # release 4
+        # cutoff (scale 250 500 $ fast 5 sine)
+        # crush (scale 4 7 $ fast 3 sine)
+        # vowel "i e [i [a < o i >]]"
+        # slow 3 (crush "8 [<4 8> <8 4 10 3> <6 4>]]")
+        # gain 0,
+    slow 2
+        $ sometimes (jux (striate 2))
+        $ sometimes (iter 4)
+        $ jux rev
+        $ s "srg(11,16)"
+        # n (irand 8)
+        # cutoff (scale 0 250 $ sine)
+        -- # speed (scale 0.5 1 $ slow 21 sine)
+        # vowel "i e [i [a < o i >]]"
+        # crush (scale 4 8 $ slow 7 sine)
+        # gain 0
+]
+# room 0.2
+# size 0.8
+
+d1 silence
+
+t2 anticipate
+$ slow 2
+$ sometimes (iter 4)
+$ whenmod 9 6 (|+| n 12)
+-- $ rarely (0.025 <~)
+-- $ rarely (superimpose (palindrome))
+$ jux rev
+$ stack [
+    slow 2
+        $ gap 2
+        $ stut 4 0.5 1.5
+        $ degrade
+        -- $ s "[~ kurt:3*2]"
+        $ s "emu:(irand 8)(5,8)"
+        # attack 2 # decay 2 # sustain 1 # release 4
+        -- # legato 0.05
+        # slow 1 (vowel "[i] [a, i, i, e] i o i")
+        # crush (scale 4 10 $ rand)
+        # gain 0,
+    sometimes (fast 2)
+        $ jux rev
+        $ sometimes (|-| speed 0.5)
+        $ s "glitch:5(9,16)"
+        # attack 2 # decay 2 # sustain 1 # release 4
+        -- # legato (scale 0.25 0.75 $ slow 9 sine)
+        # cutoff (scale 1000 5000 $ slow 13 sine)
+        # crush (scale 4 10 $ slow 3 tri)
+        -- # speed (scale 0.5 2 $ slow 37 sine)
+        # gain 0,
+    sometimes (# n "[<e3 ~ e2> ~ e3 ~ ~ ~ [d3, d4] <d3 [d3, d4]>]/4")
+        $ n "[<e2 b2> <e2 ~ b2 d3 e2 ~ > ~ e2 ~ <e2 ~ e2 b2 ~ b2> d3 d3]/4"
+        # s "supersaw"
+        # attack 4 # decay 4 # sustain 8 # release 8
+        # cutoff (scale 250 5600 $ slow 7 sine)
+        # resonance (scale 0 0.5 $ slow 6 sine)
+        # hcutoff (scale 0 250 $ slow 4 sine)
+        # gain 0,
+    sometimes (# n "[<e3 ~ e4> ~ e4 ~ ~ ~ [d3, d4] <d3 [d3, d4]>]/4")
+        $ n "[<e3 b3> ~ e2 <e3 ~ b3 d3 e3 ~ > <~ b2> <e2 ~ e2 b2 ~ b2> d3 d3]/4"
+        # s "supersquare"
+        # attack 4 # decay 4 # sustain 8 # release 8
+        # cutoff (scale 50 1000 $ slow 3 sine)
+        # resonance (scale 0.25 0.75 $ slow 9 sine)
+        # pan (fast 5 sine)
+        -- # gain (scale 0 0.5 $ fast 3 sine)
+        # gain 0
+]
+# orbit 1
+# room (scale 0.25 0.5 $ sine)
+# delay (scale 0 0.5 $ slow 11 sine)
+# delayfeedback (scale 0.25 0.75 $ slow 17 sine)
+
+d3
+$ stack [
+    s "super808*4"
+        # cutoff 400,
+    s "superhat(9,32)"
+        # legato 0.5
+        # cutoff (scale 2000 8000 $ slow 8 sine)
+        # pan rand
+]
+
+d3 silence
