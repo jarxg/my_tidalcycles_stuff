@@ -1,6 +1,6 @@
 -- 8wrds-off.tidal
 -- created: 2017-11-30
--- modified: 2017-12-01
+-- modified: 2017-12-04
 -- by @jarxg
 
 cps (99/60/4)
@@ -23,9 +23,9 @@ $ s "[sitar(3,8)]"
 -- # attack 2 # decay 2 # sustain 2 # release 4
 # legato 4
 -- # speed (scale 0 2 $ slow 15 sine)
+# crush 5
 # cutoff (scale 10 20 $ slow 16 sine)
 # pan rand
-# crush 5
 
 d1 silence
 
@@ -52,22 +52,21 @@ t3 anticipate
 -- $ whenmod 15 9 (# s "supersaw")
 -- $ whenmod 13 4 (# s "supersquare")
 -- $ every 2 (|-| crush 2)
--- $ n "[e1(5,16)]"
-$ n ""
+$ n "[e1(5,16)]"
 # s "supersaw, supersquare"
 -- # attack 0.5 # decay 0.25 # sustain 0.25 # release 0.5
 # legato (scale 0.25 0.75 $ slow 15 sine)
-# cutoff (scale 1000 5000 $ slow 8 sine)
--- # hcutoff (scale 0 500 $ slow 17 sine)
--- # resonance (scale 0 0.5 $ slow 13 sine)
 # crush (scale 4 8 $ slow 11 sine)
+# cutoff (scale 1000 5000 $ slow 8 sine)
+-- # resonance (scale 0 0.5 $ slow 13 sine)
+-- # hcutoff (scale 0 500 $ slow 17 sine)
 # orbit 1
-# room (scale 0.05 0.1 $ slow 11 tri)
--- # delay (scale 0.25 0.5 $ slow 7 sine)
-# delay 0.5
--- # delaytime (scale 0.5 0.75 $ slow 19 sine)
-# delaytime 0.5
-# delayfeedback (scale 0 0.5 $ slow 9 sine)
+    # room (scale 0.05 0.1 $ slow 11 tri)
+    -- # delay (scale 0.25 0.5 $ slow 7 sine)
+    # delay 0.5
+    -- # delaytime (scale 0.5 0.75 $ slow 19 sine)
+    # delaytime 0.5
+    # delayfeedback (scale 0 0.5 $ slow 9 sine)
 
 t4 clutch
 $ n "0*2"

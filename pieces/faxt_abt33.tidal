@@ -1,6 +1,6 @@
 -- 20171016.tidal / faxt_abt33.tidal
 -- created: 2017-10-16
--- modified: 2017-12-3
+-- modified: 2017-12-4
 -- by @jarxg
 
 cps (95/60/4)
@@ -22,10 +22,10 @@ $ stack [
         $ jux rev
         $ sound "~ arpy ~ [arpy ~ arpy?]"
         # attack 2 # decay 2 # sustain 1 # release 4
-        # cutoff (scale 250 500 $ fast 5 sine)
-        # crush (scale 4 7 $ fast 3 sine)
         # vowel "i e [i [a < o i >]]"
-        # slow 3 (crush "8 [<4 8> <8 4 10 3> <6 4>]]")
+        # crush (scale 4 7 $ fast 3 sine)
+        -- # slow 3 (crush "8 [<4 8> <8 4 10 3> <6 4>]]")
+        # cutoff (scale 250 500 $ fast 5 sine)
         # gain 0,
     slow 2
         $ sometimes (jux (striate 2))
@@ -33,10 +33,10 @@ $ stack [
         $ jux rev
         $ s "srg(11,16)"
         # n (irand 8)
-        # cutoff (scale 0 250 $ sine)
         -- # speed (scale 0.5 1 $ slow 21 sine)
         # vowel "i e [i [a < o i >]]"
         # crush (scale 4 8 $ slow 7 sine)
+        # cutoff (scale 0 250 $ sine)
         # gain 0
 ]
 # room 0.2
@@ -69,9 +69,9 @@ $ stack [
         $ s "glitch:5(9,16)"
         # attack 2 # decay 2 # sustain 1 # release 4
         -- # legato (scale 0.25 0.75 $ slow 9 sine)
-        # cutoff (scale 1000 5000 $ slow 13 sine)
-        # crush (scale 4 10 $ slow 3 tri)
         -- # speed (scale 0.5 2 $ slow 37 sine)
+        # crush (scale 4 10 $ slow 3 tri)
+        # cutoff (scale 1000 5000 $ slow 13 sine)
         # gain 0,
     sometimes (# n "[<e3 ~ e2> ~ e3 ~ ~ ~ [d3, d4] <d3 [d3, d4]>]/4")
         $ n "[<e2 b2> <e2 ~ b2 d3 e2 ~ > ~ e2 ~ <e2 ~ e2 b2 ~ b2> d3 d3]/4"

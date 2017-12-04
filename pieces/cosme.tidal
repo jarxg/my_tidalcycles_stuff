@@ -1,5 +1,6 @@
 -- cosme.tidal
 -- created: 2017-12-02
+-- modified: 2017-12-04
 -- by: @jarxg
 
 cps (145/60/4)
@@ -19,10 +20,11 @@ $ stack [
     -- jux rev $ sometimes (jux (striate 4)) $ sometimes (iter 4) $ s "fone(11,32)" # legato 1 # cutoff (scale 500 2500 $ slow 8 sine) # crush (scale 4 7 $ rand),
     -- jux rev $ sometimes (0.025 <~) $ whenmod 9 6 (striate 2) $ sometimes (|-| speed 1) $ s "mdm(7,8)" # n (irand 45) # legato (scale 0 0.5 $ slow 12 sine) # cutoff (scale 250 500 $ slow 5 sine) # speed (scale 0 2 $ slow 17 sine)
 ]
-# orbit 2
-# room (scale 0.25 0.75 $ slow 11 sine)
-# delay (scale 0.25 0.75 $ slow 9 saw)
-# delayfeedback (scale 0.25 0.75 $ slow 15 tri)
+# orbit 1
+    # room (scale 0.25 0.75 $ slow 11 sine)
+    # delay (scale 0.25 0.75 $ slow 9 saw)
+    # delayfeedback (scale 0.25 0.75 $ slow 15 tri)
+# gain 1
 
 t2 (anticipateIn 11)
 $ jux rev
@@ -37,14 +39,14 @@ $ stack [
 ]
 # s "[emu, srg, glitch, cr8000]"
 # legato (scale 0.1 0.9 $ slow 3 sine)
+# crush (scale 4 10 $ rand)
 # cutoff (scale 1000 5000 $ slow 4 sine)
 # hcutoff (scale 0 500 $ slow 9 sine)
-# crush (scale 4 10 $ rand)
-# orbit 1
-# room (scale 0 0.5 $ slow 17 sine)
-# delay (scale 0 0.75 $ slow 11 sine)
-# delaytime (scale 1 3 $ slow 19 sine)
-# delayfeedback (scale 0.25 0.5 $ slow 23 sine)
+# orbit 2
+    # room (scale 0 0.5 $ slow 17 sine)
+    # delay (scale 0 0.75 $ slow 11 sine)
+    # delaytime (scale 1 3 $ slow 19 sine)
+    # delayfeedback (scale 0.25 0.5 $ slow 23 sine)
 # gain 0
 
 d2 silence
@@ -54,6 +56,6 @@ $ stack [
     -- sometimes (chop 4) $ every 3 (jux (gap 3)) $ sometimes (iter 8) $ sometimes (iter 5) $ every 4 (jux rev) $ n "0*4" # s "super808" # cutoff 300 # crush "3 <3 [1 1]> <1 3 3> <3 1 3>"
     -- n "0(13,16)" # s "superhat" # cutoff (scale 1000 2500 $ slow 9 sine) # pan sine
 ]
-# gain 1.25
 # orbit 3
-# room 0.2
+    # room 0.2
+# gain 1

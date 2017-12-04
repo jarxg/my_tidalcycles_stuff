@@ -1,4 +1,6 @@
+-- 20171014.tidal / 01.tidal
 -- created: 2017-10-14
+-- modified: 2017-12-04
 -- by @jarxg
 
 hush
@@ -15,19 +17,17 @@ $ sound "[~ [~ [~ ~]]] [~ [~ [~ kurt:6]]]"
 -- # slow 8 (crush "5 [4 8 4] 8")
 # gain 0.75
 # legato 0.15
-# room 0.1
-# size 0.5
 # orbit 0
+    # room 0.1
+    # size 0.5
 
 d2
-$ n "1*2"
-# sound "808bd:3*2"
-# orbit 1
+$ sound "super808*4"
 
 d3
 $ slow 2
 $ sound "~ [~ glitch:6*2]"
 # legato "0.75 [0.125 0.05]"
-# room 0.2
+# orbit 1
+    # room 0.2
 # gain 0.75
-# orbit 2
