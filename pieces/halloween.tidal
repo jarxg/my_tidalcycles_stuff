@@ -1,0 +1,36 @@
+-- 20171030.tidal / halloween.tidal
+-- created: 2017-10-30
+-- by @jarxg
+
+cps (120/60/4)
+
+hush
+
+d1
+$ fast 2
+$ jux rev
+$ n "<e4 a5> fs4 <a5*2 c5> b5 c5*2 a5 <fs4 e5*2> <e4 c4>"
+# s "superpiano"
+# legato (scale 0.5 0.75 $ slow 5 sine)
+-- # slow 5 (legato (sine / 2 + 0.25)) ^- same as line 14???
+# coarse "[<2 5 4> 2] <4 [5 7]> [2 3 <4 3 8>]"
+# slow 6 (cutoff (sine * 1450 + 50))
+# gain "1"
+
+d1 silence
+
+d2
+$ stack [
+    n "3 3 3 <3 3*2>"
+        # s "808bd"
+        # cutoff 500
+        # gain "1.5",
+    s "808:4*16"
+        # legato "0.15"
+        # cutoff "[5000 2500 6000 [5000 2500 6000 4000] 4000]",
+    n "~ 0 ~ [0 [0 <~ 0>]]"
+        # s "sd"
+        # gain "1 1 1 [1 [0.5 0.75]]"
+]
+
+d2 silence

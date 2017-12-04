@@ -35,8 +35,7 @@ $ n (irand 32)
 t3 (anticipateIn 16)
 $ stut 3 0.5 1.25
 $ jux rev
-$ n "0(3,8)"
-# s "super808"
+$ s "super808(3,8)"
 # cutoff 400
 # gain 1.25
 

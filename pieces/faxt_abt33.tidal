@@ -20,7 +20,7 @@ $ stack [
         $ stut 4 0.5 0.5
         $ gap 2
         $ jux rev
-        $ sound "~ arpy ~ [arpy ~ arpy?]"
+        $ s "~ arpy ~ [arpy ~ arpy?]"
         # attack 2 # decay 2 # sustain 1 # release 4
         # vowel "i e [i [a < o i >]]"
         # crush (scale 4 7 $ fast 3 sine)

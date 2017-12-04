@@ -9,8 +9,7 @@ hush
 
 d1
 $ stack [
-    n "0*4"
-        # s "bd"
+    s "bd*4"
         # cutoff 500
         # gain 1.5,
     stut 4 0.25 0.25
