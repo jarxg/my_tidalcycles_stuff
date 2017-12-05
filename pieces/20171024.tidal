@@ -1,4 +1,6 @@
+-- 20171024.tidal
 -- created: 2017-10-24
+-- modified: 2017-12-04
 -- by @jarxg
 
 cps (135/60/4)
@@ -10,65 +12,58 @@ $ jux rev
 $ stut 3 0.5 1.5
 $ n "a3 ~ ~ a3 ~ <a3 e4> ~ ~"
 # s "supersaw"
-# slow 5 (crush (sine*6 + 4))
-# slow 3 (cutoff (sine*50 + 50))
-# legato "0.5"
-# gain "1"
-# orbit "1"
+# crush (scale 4 10 $ slow 5 sine)
+# cutoff (scale 50 100 $ slow 3 sine)
+# legato 0.5
 
 d1 silence
 
 d2
-$ n "3*4"
-# s "808bd"
-# gain "1.5"
+$ stack [
+    n "3*4"
+        # s "808bd"
+        # gain 1.5,
+    sometimes (jux rev)
+        $ n "4*16"
+        # s "808"
+        # cutoff (scale 2000 5500 $ rand)
+]
 
 d2 silence
 
 d3
-$ sometimes (jux rev)
-$ n "4*16"
-# s "808"
-# cutoff "[[5500 2000 2500] 5500 2000] [2500 [5500 [2500 5500 2000] 2000] [2500 5500 2000] 2500 [5500 [2500 5500 2000] 2000]]"
+$ stack [
+    sometimes (jux rev)
+        $ every 4 (shuffle 8)
+        $ n "~ ~ ~ ~ ~ [a4 a6] <a6 c5> [d5 a6]"
+        # s "supersquare"
+        # legato (scale 0.05 0.1 $ slow 4 sine)
+        # slow 3 (vowel "{[<i [i, o]> [o, e]] <u [i [i o]]>}%8")
+        # crush (scale 3 16 $ slow 7 sine)
+        # cutoff (scale 20 185 $ slow 5 sine)
+    degrade
+        $ stut 3 0.5 1.5
+        $ n "~ ~ ~ ~ ~ [c4 a5] <a6 c4> [a5 a6]]"
+        # s "supersquare"
+        # crush (scale 4 10 $ slow 3 sine)
+        # cutoff (scale 15 135 $ slow 5 sine)
+        # orbit "1"
+            # slow 2 (room "~ 0.2 ~ [0.8 0.4]")
+]
+# gain "0.75"
 
 d3 silence
 
 d4
-$ sometimes (jux rev)
-$ every 4 (shuffle 8)
-$ n "~ ~ ~ ~ ~ [a4 a6] <a6 c5> [d5 a6]"
-# s "supersquare"
-# slow 3 (vowel "{[<i [i, o]> [o, e]] <u [i [i o]]>}%8")
-# slow 7 (crush (sine*13+3))
-# slow 5 (cutoff (sine*165 + 20))
-# slow 4 (legato (sine + 0.05))
-# gain "0.75"
-
-d4 silence
-
-d5
-$ degrade
-$ stut 3 0.5 1.5
-$ n "~ ~ ~ ~ ~ [c4 a5] <a6 c4> [a5 a6]]"
-# s "supersquare"
-# slow 3 (crush (sine*6 + 4))
-# slow 5 (cutoff (sine*120 + 15))
-# gain "0.75"
-# slow 2 (room "~ 0.2 ~ [0.8 0.4]")
-# orbit "1"
-
-d5 silence
-
-d6
 $ degrade
 $ superimpose (jux rev)
 $ sometimes (striate 2)
 $ sometimes (fast 2)
 $ n (run 8)
 # s "dr_few"
-# crush ((irand 4) + 3)
-# slow 3 (cutoff (sine*1300 + 50))
 # legato 0.5
+# crush (scale 3 7 $ irand)
+# cutoff (scale 50 1350 $ slow 3 sine)
 # hcutoff 100
 
 d6 silence

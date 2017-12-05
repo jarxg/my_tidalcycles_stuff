@@ -57,8 +57,8 @@ $ stack [
         $ superimpose (gap 3)
         $ s "pad(6,8,5) glitch(5,8,3)"
         # n (irand 1000)
-        # cutoff "500"
-        # legato "0.5",
+        # cutoff 500
+        # legato 0.5,
     n "e2 e1*8"
         # s "supersaw"
         # slow 24 (legato (scale 1 7 sine / 10))

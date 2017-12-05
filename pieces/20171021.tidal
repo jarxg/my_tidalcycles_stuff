@@ -1,22 +1,26 @@
+-- 20171021.tidal
 -- created: 2017-10-21
+-- modified: 2017-12-04
 -- by @jarxg
 
 cps (115/60/4)
 
-d1 silence
-
-d2 silence
-
-d3 silence
-
 hush
 
 d1
-$ n "{3 2 6}%4"
-# s "kurt"
-# cutoff "2500"
-# gain "2"
-# orbit "1"
+$ stack [
+    n "{3 2 6}%4"
+        # s "kurt"
+        # cutoff 2500
+        # gain 2,
+    striate 2
+        $ n "c3*2(3,8) <c4*2 c3*3>"
+        # s "supersquare"
+        # legato 0.25
+        # cutoff 5000
+]
+
+d1 silence
 
 d2
 $ slow 2
@@ -30,18 +34,11 @@ $ stut 3 0.25 1.5
 $ n "[c3, <[c5 g5] [d6 g5]>] [<c3 c5>, <[b5 g5] [d4 g5]>]"
 -- $ n "[g3, <[b5 d5] [<d6 g6> g5]>] [<d3 d5>, <[g5 a5] [<a4 a5> <g5 g6 g7>]>]"
 # s "superpiano"
-# crush "5"
-# cutoff "3500"
-# room "0.75"
-# size "0.75"
-# gain "0.9"
-# orbit "2"
+# crush 5
+# cutoff 3500
+# orbit 1
+    # room 0.75
+    # size 0.75
+# gain 0.9
 
-d3
-$ striate 2
-$ n "c3*2(3,8) <c4*2 c3*3>"
-# s "supersquare"
-# legato "0.25"
-# cutoff "5000"
-# gain "1.5"
-# orbit "3"
+d2 silence

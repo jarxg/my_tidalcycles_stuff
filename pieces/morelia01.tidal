@@ -1,0 +1,29 @@
+import Sound.Tidal.OscStream
+
+let cine = Shape {
+    params = [
+        S "load" Nothing
+        ],
+    cpsStamp = False,
+    latency = 0
+    }
+    vivo = OscSlang {path = "/note",
+                    timestamp = NoStamp,
+                    namedParams = False,
+                    preamble = []
+                    }
+    vivoStream = do
+        s <- makeConnection "127.0.0.1" 5612 vivo
+        stream (Backend s $ (\_ _ _ -> return ())) cine
+    load = makeS cine "load"
+    size = makeF cine "size"
+
+v1 <- vivoStream
+
+let hush = mapM_ ($ silence) [v1]
+
+let solo = (>>) hush
+
+v1 $ load "000594.mp4"
+
+hush

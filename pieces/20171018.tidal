@@ -1,4 +1,6 @@
+-- 20171018.tidal
 -- created: 2017-10-18
+-- modified: 2017-12-04
 -- by @jarxg
 
 cps (135/60/4)
@@ -13,45 +15,37 @@ $ striate 2
 $ stut 3 0.45 1.1
 $ n "[e2*2 <e3*2 e4(3,8)>] e2*4> a5*2 [e4 [a5 d4]]"
 # s "casio arpy [supersquare casio]"
+# legato 0.23
 # slow 3 (vowel "i e [i o a i] a")
 # cutoff 5500
-# legato 0.23
-# gain 0.8
-# orbit 1
+# gain 0.75
 
 d1 silence
 
 d2
-$ s "808bd:3*2"
-# cutoff 200
-# legato 0.5
-# gain 1.2
-# orbit 2
+$ stackc [
+    s "808bd:3*2"
+        # legato 0.5
+        # cutoff 200,
+    stut 3 0.2 0.75
+        $ n "~ <[1 [~ 1]] 1>"
+        # s "~ 808sd"
+        # legato 0.2
+        # cutoff "~ [8000 [2000 4000]]"
+        # gain 0.75
+]
 
 d2 silence
 
 d3
-$ stut 3 0.2 0.75
-$ n "~ <[1 [~ 1]] 1>"
-# s "~ 808sd"
-# cutoff "~ [8000 [2000 4000]]"
-# legato 0.2
-# gain 0.75
-# orbit 3
-
-d3 silence
-
-d4
 $ slow 2
 $ striate 2
 $ jux rev
 $ every 3 palindrome
 $ n "0(3,8) [0 1(3,8) 1]"
 # s "numbers"
+# legato 1.25
 # crush 5
 # cutoff 1500
-# legato 1.25
-# gain 1
-# orbit 4
 
-d4 silence
+d3 silence
