@@ -1,4 +1,6 @@
+-- 20171130.tidal
 -- created: 2017-11-30
+-- modified: 2017-12-07
 -- by @jarxg
 
 cps (125/60/4)
@@ -15,15 +17,16 @@ $ sometimes (0.25 <~)
 $ sometimes (jux rev)
 $ sometimes (striate 4)
 $ s "birds(9,16)"
-# n (irand 50)
+# n (irand 8)
 # attack 2 # decay 2 # sustain 4 # release 4
+-- # legato (scale 0.05 0.25 $ slow 17 sine)
 # vowel "[i o a] <e [[i o a] e u i] [u [e u i]]> i"
-# legato (scale 0.05 0.25 $ slow 17 sine)
 # speed (scale 0 1 $ slow 13 sine)
 # cutoff (scale 10 20 $ slow 7 sine)
 # crush (scale 6 10 $ slow 16 sine)
 # pan rand
-# orbit 1
+
+d1 silence
 
 t2 clutch
 $ degrade
@@ -36,21 +39,21 @@ $ sometimes (0.5 <~)
 $ sometimes (0.25 <~)
 $ sometimes (0.125 <~)
 $ sometimes (striate 8)
-$ stack [
-    n "(irand 8)(5,13)"
-    ]
+$ n "(irand 8)(5,13)"
 # s "birds"
 # attack 2 # decay 2 # sustain 4 # release 4
-# legato (scale 0 2 $ slow 7 sine)
-# cutoff (scale 10 100 $ slow 13 sine)
+-- # legato (scale 0 2 $ slow 7 sine)
 # speed (scale 0 4 $ slow 14 sine)
 # crush (scale 5 10 $ slow 32 tri)
+# cutoff (scale 10 100 $ slow 13 sine)
 # pan sine
 # orbit 1
-# room (scale 0 0.25 $ slow 4 tri)
-# delay (scale 0 0.5 $ slow 9 sine)
-# delaytime (scale 0 6 $ slow 11 sine)
-# delayfeedback (scale 0.25 0.75 $ slow 17 sine)
+    # room (scale 0 0.25 $ slow 4 tri)
+    # delay (scale 0 0.5 $ slow 9 sine)
+    # delaytime (scale 0 6 $ slow 11 sine)
+    # delayfeedback (scale 0.25 0.75 $ slow 17 sine)
+
+d2 silence
 
 t3 clutch
 -- $ whenmod 5 3 (jux (striate 2))
@@ -58,15 +61,18 @@ $ whenmod 19 7 (jux (iter 2))
 $ s "amencutup(11,16)"
 # n (run 8)
 # speed (scale 0 2 $ slow 34 sine)
-# cutoff (scale 25 25 $ slow 45 sine)
 # crush (irand 8)
+# cutoff (scale 25 25 $ slow 45 sine)
 
-do
-    d3 silence
-    d4 silence
+d3 silence
 
 d4
-$ n "0*4"
-# s "super808"
+$ stack [
+    s "super808*4"
+    ,
+    s "superhat(11,16)"
+    # gain (scale 0.5 1 $ rand)
+]
 # cutoff 400
-# gain 1
+
+d4 silence

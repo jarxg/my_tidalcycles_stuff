@@ -1,4 +1,6 @@
+-- 20171125.tidal
 -- created: 2017-11-25
+-- modified: 2017-12-07
 -- by @jarxg
 -- rendered: "SC_171125_044232.aiff"
 
@@ -14,11 +16,11 @@ $ sometimes (jux rev)
 $ whenmod 10 3 (jux (# speed "-1"))
 $ n (run 32)
 # s "srg"
-# pan rand
+# legato (scale 0.01 0.09 $ slow 24 sine)
 -- # legato 0.25
 # speed (scale 0 2 $ slow 5 sine)
-# legato (scale 0.01 0.09 $ slow 24 sine)
 # cutoff (scale 0 5 $ slow 25 sine)
+# pan rand
 
 d1 silence
 
@@ -37,22 +39,24 @@ $ stack [
     s "{<~ mdm:7 ~> mdm:34 <<mdm:26 ~ mdm:15> <mdm:13 ~ mdm:2>}%8",
     s "<~ mdm:14 ~> ~ mdm:0 < ~ <mdm:8 ~ mdm:22> ~>"
 ]
-# attack 8
-# sustain 8
-# decay 16
-# release 16
+# attack 8 # decay 16 # sustain 8 # release 16
 -- # legato (scale 0.25 50 $ slow 10 sine)
 # speed (scale 0 1 $ slow 21 sine)
+# crush (scale 3 7 $ slow 8 sine)
 # cutoff (scale 0 5 $ slow 32 sine)
 # resonance (scale 0 0.25 $ slow 45 sine)
-# crush (scale 3 7 $ slow 8 sine)
 
 d2 silence
 
-do
-    d3 $ n "0*4" # s "super808"
-    d4 $ n "0*16" # s "superhat" # legato (scale 0 1 $ rand) # cutoff (scale 500 2500 $ slow 8 sine) # pan rand
+d3
+$ stack [
+    s "super808*4"
+        # cutoff 400
+        ,
+    s "superhat*16"
+        # legato (scale 0 1 $ rand)
+        # cutoff (scale 500 2500 $ slow 8 sine)
+        # pan rand
+]
 
-do
-    d3 silence
-    d4 silence
+d3 silence

@@ -1,4 +1,6 @@
+-- 20171127.tidal
 -- created: 2017-11-17
+-- modified: 2017-12-07
 -- by @jarxg
 
 cps (125/60/4)
@@ -6,28 +8,26 @@ cps (125/60/4)
 hush
 
 d1
-$ n "[c2(11,16), e3(3,8)]"
-# s "supersaw"
-# vowel "i o [i e]"
-# crush (scale 3 6 $ slow 3 sine)
-# cutoff (scale 50 3500 $ slow 7 sine)
-# legato 1
-
-d1
-$ n "[a2(5,8), c3(3,8)]"
-# s "supersaw"
-# crush (scale 3 6 $ slow 9 sine)
-# cutoff (scale 150 1500 $ slow 7 sine)
-# legato 1
-
-
-d1 silence
+$ stack [
+    $ n "[c2(11,16), e3(3,8)]"
+        # s "supersaw"
+        # legato 1
+        # vowel "i o [i e]"
+        # crush (scale 3 6 $ slow 3 sine)
+        # cutoff (scale 50 3500 $ slow 7 sine)
+    ,
+    n "[a2(5,8), c3(3,8)]"
+        # s "supersaw"
+        # legato 1
+        # crush (scale 3 6 $ slow 9 sine)
+        # cutoff (scale 150 1500 $ slow 7 sine)
+]
 
 t2 (anticipateIn 4)
-$ s "bd bd bd bd"
-# cutoff 500
+$ s "super808*4"
 # legato 1
-# gain 2
+# cutoff 350
+# gain 1.5
 
 d2
 $ jux rev
@@ -45,10 +45,3 @@ $ s "homedepot(5,8)"
 # legato (slow 5 sine)
 
 d3 silence
-
-d4
-$ s "bd bd bd bd"
-# cutoff 1500
-# gain 2
-
-d4 silence

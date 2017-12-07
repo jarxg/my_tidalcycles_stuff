@@ -24,6 +24,6 @@ let hush = mapM_ ($ silence) [v1]
 
 let solo = (>>) hush
 
-v1 $ load "000594.mp4"
+v1 $ n "1 load 000594.mp4"
 
 hush

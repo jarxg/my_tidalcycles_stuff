@@ -1,4 +1,6 @@
+-- 20171127.tidal
 -- created: 2017-11-27
+-- modified: 2017-12-07
 -- by @jarxg
 
 cps (90/60/4)
@@ -50,15 +52,18 @@ t4 anticipate
 $ jux rev
 $ sometimes (|-| speed 1)
 $ s "kurt"
-# up "~"
+-- # up "0 5 12 8"
 # vowel "i o i e i i"
 # crush 6
 # cutoff (scale 500 5000 $ slow 4 sine)
 
-do
-    t5 anticipate $ n "~" # s "super808" # cutoff 400
-    t6 anticipate $ n "0(3,8)" # s "superhat" # cutoff (scale 2500 5000 $ slow 8 sine) # legato (scale 0.05 0.25 $ slow 16 sine) # pan rand
-
-do
-    d5 silence
-    d6 silence
+d5
+$ stock [
+    s "super808*4"
+        # cutoff 400
+    ,
+    s "superhat(3,8)"
+        # legato (scale 0.05 0.25 $ slow 16 sine)
+        # cutoff (scale 2500 5000 $ slow 8 sine)
+        # pan rand
+]

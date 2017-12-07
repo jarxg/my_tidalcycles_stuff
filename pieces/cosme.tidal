@@ -14,17 +14,45 @@ $ sometimes (iter 7)
 $ sometimes (jux rev)
 -- $ striate 2
 $ stack [
-    -- s "east(7,8)" # n (irand 8) # cutoff (scale 25 250 $ slow 45 sine),
-    -- jux rev $ sometimes (|-| speed 1) $ sometimes (|-| speed 0.5) $ s "tabla(5,8)" # n (irand 32) # cutoff (scale 250 2500 $ slow 37 sine) # vowel "{<i <i <o o u> a e> <e a i>}%16" # crush (scale 5 10 $ rand) # gain 1,
-    -- sometimes (# speed (-1)) $ s "amencutup(9,16)" # n (run 16) # cutoff (scale 250 500 $ slow 17 sine) # gain 0.75
-    -- jux rev $ sometimes (jux (striate 4)) $ sometimes (iter 4) $ s "fone(11,32)" # legato 1 # cutoff (scale 500 2500 $ slow 8 sine) # crush (scale 4 7 $ rand),
-    -- jux rev $ sometimes (0.025 <~) $ whenmod 9 6 (striate 2) $ sometimes (|-| speed 1) $ s "mdm(7,8)" # n (irand 45) # legato (scale 0 0.5 $ slow 12 sine) # cutoff (scale 250 500 $ slow 5 sine) # speed (scale 0 2 $ slow 17 sine)
+    s "east(7,8)"
+        # n (irand 8)
+        # cutoff (scale 25 250 $ slow 45 sine)
+        ,
+    jux rev $ sometimes (|-| speed 1)
+        $ sometimes (|-| speed 0.5)
+        $ s "tabla(5,8)"
+        # n (irand 32)
+        # vowel "{<i <i <o o u> a e> <e a i>}%16"
+        # crush (scale 5 10 $ rand)
+        # cutoff (scale 250 2500 $ slow 37 sine)
+        ,
+    sometimes (# speed (-1))
+        $ s "amencutup(9,16)"
+        # n (run 16)
+        # cutoff (scale 250 500 $ slow 17 sine)
+        # gain 0.75
+        ,
+    jux rev
+        $ sometimes (jux (striate 4))
+        $ sometimes (iter 4)
+        $ s "fone(11,32)"
+        # legato 1
+        # crush (scale 4 7 $ rand),
+        # cutoff (scale 500 2500 $ slow 8 sine)
+        ,
+    jux rev $ sometimes (0.025 <~)
+        $ whenmod 9 6 (striate 2)
+        $ sometimes (|-| speed 1)
+        $ s "mdm(7,8)"
+        # n (irand 45)
+        # legato (scale 0 0.5 $ slow 12 sine)
+        # speed (scale 0 2 $ slow 17 sine)
+        # cutoff (scale 250 500 $ slow 5 sine)
 ]
 # orbit 1
     # room (scale 0.25 0.75 $ slow 11 sine)
     # delay (scale 0.25 0.75 $ slow 9 saw)
     # delayfeedback (scale 0.25 0.75 $ slow 15 tri)
-# gain 1
 
 t2 (anticipateIn 11)
 $ jux rev
