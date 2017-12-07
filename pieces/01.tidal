@@ -17,7 +17,7 @@ $ sound "[~ [~ [~ ~]]] [~ [~ [~ kurt:6]]]"
 -- # slow 8 (crush "5 [4 8 4] 8")
 # gain 0.75
 # legato 0.15
-# orbit 0
+# orbit 1
     # room 0.1
     # size 0.5
 
@@ -28,6 +28,6 @@ d3
 $ slow 2
 $ sound "~ [~ glitch:6*2]"
 # legato "0.75 [0.125 0.05]"
-# orbit 1
+# orbit 2
     # room 0.2
 # gain 0.75

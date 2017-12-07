@@ -93,8 +93,8 @@ $ stack [
 ]
 # orbit 1
 # room (scale 0.25 0.5 $ sine)
-# delay (scale 0 0.5 $ slow 11 sine)
-# delayfeedback (scale 0.25 0.75 $ slow 17 sine)
+    # delay (scale 0 0.5 $ slow 11 sine)
+    # delayfeedback (scale 0.25 0.75 $ slow 17 sine)
 
 d3
 $ stack [
