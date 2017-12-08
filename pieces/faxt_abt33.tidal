@@ -1,6 +1,6 @@
 -- 20171016.tidal / faxt_abt33.tidal
 -- created: 2017-10-16
--- modified: 2017-12-4
+-- modified: 2017-12-7
 -- by @jarxg
 
 cps (95/60/4)
@@ -8,7 +8,7 @@ cps (95/60/4)
 hush
 
 t1 (clutchIn 4)
--- $ slow 2
+$ slow 2
 $ sometimes palindrome
 $ sometimes (jux rev)
 $ whenmod 18 7 (iter 2)
