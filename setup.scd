@@ -1,7 +1,7 @@
 ServerOptions.devices;
 s.options.outDevice = "Soundflower (2ch)";
 s.options.outDevice = "Built-in Output";
-s.options.outDevice = "Scarlett 2i2";
+s.options.outDevice = "Scarlett 2i2 USB";
 
 s.recSampleFormat = "int16";
 s.recHeaderFormat = "wav";

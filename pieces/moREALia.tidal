@@ -1,5 +1,48 @@
 -- moREALia.tidal
 -- created: 2017-12-07
+-- modified: 2017-12-08
 -- by: @jarxg
 
--- nothing here yet! :(
+cps (90/60/4)
+
+hush
+
+d1
+$ jux rev
+$ sometimes (|/| speed 2)
+$ sometimes (|/| speed 4)
+$ sometimes (|/| speed 8)
+$ stack [
+    s "numbers"
+        # n (irand 16)
+    ,
+    sometimes (|/| speed 2)
+        $ s "birds"
+        # n (irand 16)
+        #
+]
+# attack 2 # decay 2 # sustain 4 # release 4
+# speed 0.25
+# cutoff 4000
+
+d2 silence
+$ slow 4
+$ sometimes (jux rev)
+$ slow 4
+$ stack [
+    s "supersaw"
+        # gain 0.5
+    ,
+    s "supersquare"
+        # gain 0.5
+]
+# n "<e3 <b3 a3> g3>"
+# attack 8 # decay 8 # sustain 16 # release 16
+# pan rand
+
+d3
+$ slow 4
+$ n "0"
+# s "emu"
+# shape 0.2
+# orbit 1
