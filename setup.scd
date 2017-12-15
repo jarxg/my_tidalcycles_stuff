@@ -10,5 +10,7 @@ s.boot;
 SuperDirt.start;
 s.quit;
 
+LADSPA.listPlugins
+
 s.record;
 s.stopRecording;

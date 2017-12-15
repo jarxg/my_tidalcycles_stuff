@@ -1,7 +1,8 @@
 -- 20171110.tidal
--- created: 2017-11-10
--- modified: 2017-12-04
--- by @jarxg
+--- by @jarxg
+--- created: 2017-11-10
+--- modified: 2017-12-14
+--- recorded:
 
 cps (135/60/4)
 
@@ -30,18 +31,19 @@ d1 silence
 d2
 $ stack [
     jux rev
-        $ s "dr(11,16)?"
-        # n (irand 32)
-        # legato 1
-        # slow 20 (cutoff (scale 5 5000 sine)),
+    $ s "dr(11,16)?"
+    # n (irand 32)
+    # legato 1
+    # slow 20 (cutoff (scale 5 5000 sine))
+    ,
     every 2 (0.125 <~)
-        $ every 3 (0.5 <~)
-        $ every 4 (0.25 <~)
-        $ sometimes (jux rev)
-        $ s "[feel(5,8)?, auto(7,8)?]"
-        # n (irand 32)
-        # slow 7 (crush (scale 3 7 sine))
-        # slow 5 (cutoff (scale 500 5000 sine))
+    $ every 3 (0.5 <~)
+    $ every 4 (0.25 <~)
+    $ sometimes (jux rev)
+    $ s "[feel(5,8)?, auto(7,8)?]"
+    # n (irand 32)
+    # slow 7 (crush (scale 3 7 sine))
+    # slow 5 (cutoff (scale 500 5000 sine))
 ]
 
 d2 silence
