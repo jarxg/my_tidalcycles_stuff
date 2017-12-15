@@ -1,24 +1,25 @@
 -- 20171127.tidal
--- created: 2017-11-27
--- modified: 2017-12-07
--- by @jarxg
+--- by @jarxg
+--- created: 2017-11-27
+--- modified: 2017-12-15
 
-cps (90/60/4)
+cps (125/60/4)
 
 hush
 
-t1 clutch
+d1
 -- $ whenmod 9 5 (jux (iter 4))
 -- $ whenmod 10 3 (0.0125 <~)
 -- $ every 4 palindrome
 -- $ sometimes (stut 3 0.5 0.75)
 $ stack [
     n "0 ~ [~ 0] ~ 0 0 ~ ~"
+    # s "dr110"
+    -- ,
     -- n "~ ~ 1 ~ ~ ~ 1 ~"
     -- n "2(13,16)"
     -- n "~ ~ ~ 3 ~ <4 3> ~ 3" --
 ]
-# s "dr110"
 
 d1 silence
 
@@ -48,11 +49,12 @@ $ n "5 ~ (5 5) ~ ~ ~ ~ (5 5)"
 
 d3 silence
 
-t4 anticipate
+d4
 $ jux rev
 $ sometimes (|-| speed 1)
-$ s "kurt"
--- # up "0 5 12 8"
+$ s "kurt(5,16)"
+# n "run 8"
+# legato 0.25
 # vowel "i o i e i i"
 # crush 6
 # cutoff (scale 500 5000 $ slow 4 sine)
