@@ -1,0 +1,63 @@
+-- 20171107.tidal / hptc_fail.tidal
+-- created: 2017-11-07
+-- modified: 2017-12-17
+-- by @jarxg
+
+cps (125/60/4)
+
+hush
+
+d1
+$ stack [
+s "bd*4"
+# cutoff 500
+# gain 1.5,
+stut 4 0.25 0.25
+$ n "[~ 4 ~ 4]*2"
+# s "linnhats"
+# legato 0.22
+# cutoff 5500,
+stut 3 0.25 1.55
+$ n "~ 0 ~ 0"
+# s "sd"
+]
+
+d1 silence
+
+d2
+$ stack [
+every 3 palindrome
+$ sometimes (jux rev)
+-- $ sometimes (# legato "1")
+$ every 5 (0.5 <~)
+$ every 3 (0.25 <~)
+$ every 4 (0.125 <~)
+$ s "[future(7,16), dr(3,8), tech(7,16,5)]"
+# n (irand 1000)
+# slow 8 (crush (scale 3 6 sine))
+# slow 16 (cutoff (scale 100 5000 sine))
+# orbit 1
+# room 0.2,
+every 3 palindrome
+$ sometimes (jux rev)
+-- $ sometimes (# legato "1")
+$ every 3 (0.5 <~)
+$ every 4 (0.25 <~)
+-- $ every 2 (0.125 <~)
+-- $ striate 2
+$ s "jazz(7,16)"
+# n (irand 1000)
+]
+
+d2 silence
+
+d4
+$ slow 4
+$ stack [
+jux rev $ superimpose (gap 3) $ s "pad(6,8,5) glitch(5,8,3)"
+# n (irand 1000) # speed (scale 0.25 2 $ slow 9 sine) # cutoff 1500 # legato 2,
+n "e2 e1*8"
+# s "supersaw" # slow 24 (legato (scale 1 7 sine / 10)) # slow 12 (crush (scale 3 6 sine)) # slow 32 (cutoff (scale 50 100 sine))
+]
+
+d4 silence

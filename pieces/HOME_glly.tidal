@@ -1,6 +1,6 @@
--- 20171127.tidal
+-- 20171127.tidal / HOME_glly.tidal
 -- created: 2017-11-17
--- modified: 2017-12-07
+-- modified: 2017-12-17
 -- by @jarxg
 
 cps (125/60/4)
@@ -43,5 +43,8 @@ $ stut 3 0.5 1.25
 $ s "homedepot(5,8)"
 # n (irand 150)
 # legato (slow 5 sine)
+# cutoff (scale 50 500 $ slow 8 sine)
+# resonance (scale 0 0.5 $ slow 19 sine)
+# speed (scale 0 1 $ slow 3 sine)
 
 d3 silence

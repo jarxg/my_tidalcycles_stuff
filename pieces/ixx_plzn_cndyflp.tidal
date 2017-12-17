@@ -1,0 +1,57 @@
+-- 20171110.tidal / ixx_plzn_cndyflp.tidal
+--- by @jarxg
+--- created: 2017-11-10
+--- modified: 2017-12-17
+--- recorded:
+
+cps (135/60/4)
+
+hush
+
+d1
+$ stack [
+sometimes (jux (iter 4)) $ sometimes (stut 4 0.25 0.5) $ rarely (|-| crush (irand 4)) $ sometimes (jux rev) $ s "emu(5,16)"
+# legato (scale 0.25 1.5 $ slow 4 tri) # speed (scale 1 1.5 $ slow 3 sine) # crush 7 # cutoff 4500 # gain 1.5,
+rarely (# legato 1) $ s "superhat(7,16)" # legato 0.25 # gain 1.25,
+s "supersnare(0,4,2)" # cutoff 4500 # speed 3 # gain 1.35
+]
+
+d1 silence
+
+d2
+-- $ sometimes (jux rev) $ every 4 (jux (gap 2))
+$ stack [
+s "jazz:0(0,16)",
+rarely (stut 2 0.25 0.25) $ s "cr78:0(0,8)"
+]
+# gain 1.75
+
+d2 silence
+
+t3 clutch
+$ chop 4 $ slow 8 $ jux rev $ stut 3 0.5 1.25 $ striate 2 $ s "[print(0,16), mdm(0,8)]"
+# n (irand 16)
+# attack 4 # decay 4 # sustain 4 # release 4
+# cutoff (scale 500 2500 $ slow 8 sine) # speed (scale 0 1 $ slow 5 sine)
+# orbit 1 # room 0.1 # decay 0
+
+d3 silence
+
+d3 $
+slow 4 $ jux rev $ n "[<[g3(3,8)] a2> d2(5,8), c4(7,16)]"
+# s "supersaw" # legato 1 # slow 6 (legato (scale 5 10 $ slow 10 sine)) # slow 8 (crush (scale 2 5 $ sine)) # slow 4 (cutoff (scale 5 150 $ slow 7 sine)) # gain 0.4
+
+d3 silence
+
+d4 $
+fast 2 $ every 4 (jux (|+| n "8")) $ sometimes (jux (|+| n "5")) $ stut 3 0.5 0.75 $ n "<e4 a5> b4 <a5 e5> e5 e5*2 a5 <a4 e5> <e4 a4>"
+# s "superpiano" # coarse "[<2 5 4> 2] <4 [5 7]> [2 3 <4 3 8>]" # legato (scale 0.5 0.75 $ slow 31 sine) # cutoff (scale 50 20 $ slow 19 sine) # gain 0.75 # orbit 1
+
+d4 silence
+
+d5 $ stack [
+slow 2 $ striate 2 $ sometimes (jux (|+| n (irand (5*8)))) $ stut 4 0.5 1.05 $ n "{<5 0> 5 <5 ~> <~ 2 5> <5 0 ~ 3> <5 ~> <~ 2 3> <5 3> <~ 1> <5 0 ~> <5 ~>   <3 ~ 4 1 ~>}%8" # s "arpy" # legato 1 # slow 2 (cutoff (scale 50 500 sine)),
+striate 2 $ n "5 2 0 1" # s "numbers" # vowel "i o e" # cutoff 1
+]
+
+d5 silence

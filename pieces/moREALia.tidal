@@ -1,48 +1,28 @@
 -- moREALia.tidal
--- created: 2017-12-07
--- modified: 2017-12-08
--- by: @jarxg
+--- by: @jarxg
+--- created: 2017-12-07
+--- modified: 2017-12-17
 
 cps (90/60/4)
 
 hush
 
-d1
-$ jux rev
-$ sometimes (|/| speed 2)
-$ sometimes (|/| speed 4)
-$ sometimes (|/| speed 8)
+t1 clutch $
+jux rev $ sometimes (iter 4)
 $ stack [
-    s "numbers"
-        # n (irand 16)
-    ,
-    sometimes (|/| speed 2)
-        $ s "birds"
-        # n (irand 16)
-        #
-]
-# attack 2 # decay 2 # sustain 4 # release 4
-# speed 0.25
-# cutoff 4000
+striate 4 $ s "numbers" # n (irand 16),
+sometimes (|/| speed 2)$ s "birds" # n (irand 16)
+] # attack 2 # decay 2 # sustain 4 # release 4 # speed (scale 0.25 0.75 $ slow 5 sine) # cutoff 200 # gain 0.5 # pan sine
 
-d2 silence
-$ slow 4
-$ sometimes (jux rev)
-$ slow 4
-$ stack [
-    s "supersaw"
-        # gain 0.5
-    ,
-    s "supersquare"
-        # gain 0.5
-]
-# n "<e3 <b3 a3> g3>"
-# attack 8 # decay 8 # sustain 16 # release 16
-# pan rand
+d2 $
+slow 4 $ sometimes (jux rev) $ slow 4 $ stack [
+s "supersaw" # gain 0.25,
+s "supersquare" # gain 0.5
+] # n "<e3 <b3 a3> g3>" # attack 8 # decay 8 # sustain 16 # release 16 # cutoff 10 # pan rand # gain 0.25
 
-d3
-$ slow 4
-$ n "0"
-# s "emu"
-# shape 0.2
-# orbit 1
+d3 $
+slow 4 $ jux rev $ n "[<[a3(3,8)] a2> d2(5,8), c4(7,16)]" # s "supersaw" # legato 1 # slow 6 (legato (scale 5 10 $ slow 10 sine)) # slow 8 (crush (scale 2 5 $ sine)) # slow 4 (cutoff (scale 5 150 $ slow 7 sine)) # gain 0.2
+
+d4 $
+sometimes (jux rev) $ sometimes (# n (irand 8)) $ chop 4 $ slow 8 $ n (run 8)
+# s "emu" # shape 0.5 # speed 0.5 # cutoff 250 # orbit 1 # room 0.2
