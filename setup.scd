@@ -1,5 +1,5 @@
 s.options.numBuffers = 1024 * 4; // + samples
-s.options.memSize = 8192 * 16; // if "alloc failed" messages
+s.options.memSize = 8192 * 32; // if "alloc failed" messages
 s.options.maxNodes = 1024 * 1; // if drop outs and "too many nodes"
 // (from jarmitage's setup.scd)
 
@@ -19,3 +19,5 @@ LADSPA.listPlugins
 
 s.record;
 s.stopRecording;
+
+include("SuperDirt")

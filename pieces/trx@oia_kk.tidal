@@ -1,0 +1,73 @@
+-- 20171130.tidal / trx@oia_kk.tidal
+--- by @jarxg
+--- created: 2017-11-30
+--- modified: 2017-12-15
+--- recorded: 125bpm_SC_171215_060719.wav
+
+cps (125/60/4)
+
+hush
+
+t1 clutch
+$ jux rev
+$ jux (striate 4)
+$ stut 4 0.25 0.25
+$ slow 4
+$ sometimes (|+| n (irand 24))
+$ sometimes (|-| speed "0.5")
+$ n (run 16)
+# s "[<mdm ~ glitch ~ print> <~ insect kurt ~>]"
+# speed (scale 0.5 1.5 $ slow 4 sine)
+# legato 2
+# crush (scale 4 10 $ slow 17 sine)
+# cutoff (scale 50 2500 $ slow 9 sine)
+# pan sine
+# orbit 1
+# room 0.05
+# delay 0.1
+
+d1 silence
+
+t4 anticipate
+$ sometimes palindrome
+-- $ rarely (iter 4)
+$ rarely (stut 4 1 0.25)
+$ stack [
+s "jazz:0(7,16)"
+# cutoff 400
+# gain 1.5
+,
+s "jazz:1(2,8,2)"
+,
+s "jazz:2(10,16)"
+,
+s "jazz:5(5,16,2)"
+]
+# gain 0
+
+d4 silence
+
+t5 anticipate
+$ jux rev
+$ sometimes (iter 4)
+$ sometimes (off "1/16" (|+| note 12))
+$ sometimes (off "1/8" (|+| note 24))
+$ sometimes (off "1/4" (|+| note 7))
+$ n "[e3(0,16)]"
+# s "superpwm"
+# legato 0.25
+# cutoff (scale 50 150 $ slow 9 sine)
+# orbit 1
+# room 0
+
+do
+  d5 silence
+  d6 silence
+
+d6
+$ sometimes (|-| note 12)
+$ n "e2(7,16)"
+# s "[supersaw supersquare]*3"
+# legato 0.75
+# crush (scale 4 8 $ slow 10 sine)
+# cutoff (scale 50 250 $ slow 5 sine)

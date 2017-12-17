@@ -1,6 +1,6 @@
 -- 20171019.tidal
 -- created: 2017-10-19
--- modified: 2017-12-04
+-- modified: 2017-12-15
 -- by @jarxg
 
 cps (95/60/4)
@@ -9,22 +9,19 @@ hush
 
 d1
 $ stack [
-    every 10 palindrome
-        $ every 5 (jux rev)
-        $ fast 10
-        $ gap 5
-        $ striate 10
-        $ n "[<e2 d2>*2 e4 <e5 d5>] [<[<e2 d2>*2 e4] <e5 d5>>]"
-        # s "moog ~"
-        -- # slow 8 (vowel "<[i o i e] [o i o i]>")
-        striate 2
-        -- $ jux rev
-        -- $ every 3 palindrome
-    stut 4 0.5 1.55
-        $ n (run 4)
-        # s "glitch*2"
-        # legato 0.05
-        # cutoff "[4000 1000] <2000 1000>"
+every 10 palindrome
+$ every 5 (jux rev)
+$ fast 10
+$ gap 5
+$ striate 10
+$ n "[<e2 d2>*2 e4 <e5 d5>] [<[<e2 d2>*2 e4] <e5 d5>>]"
+# s "~ ~moog ~"
+,
+stut 4 0.5 1.55
+$ n (run 4)
+# s "glitch*2"
+# legato 0.05
+# cutoff "[4000 1000] <2000 1000>"
 ]
 
 d1 silence
