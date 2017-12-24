@@ -1,0 +1,59 @@
+-- 20171027.tidal / ntsofn.tidal
+-- created: 2017-10-27
+-- modified: 2017-12-19
+-- by @jarxg
+
+cps (135/60/4)
+
+hush
+
+t1 anticipate
+$ sometimes (|+| n 12)
+$ sometimes (jux (iter 4))
+$ n "[g3(0,8), b4(0,8,1)]"
+# s "supersaw"
+# legato (scale 0.25 1.75 $ slow 7 sine)
+# crush (scale 3 8 $ rand)
+# cutoff (scale 500 4500 $ slow 5 sine)
+# orbit 1
+# room 0.1
+# delay 0.25
+# delaytime "1/3"
+# delayfeedback 0.75
+
+d1 silence
+
+d2
+$ s "[cr78:0(10,16), jazz:7(7,16), jazz:6(3,8,2)]"
+# cutoff 4250
+# gain 1.5
+
+d2 silence
+
+t3 clutch
+$ sometimes (iter 4)
+$ sometimes (off 0.125 (|+| n 24))
+$ stack [
+fast 2
+$ striate 2
+$ sometimes (jux rev)
+$ n "{0 1 3 2 0}%4"
+# s "glitch"
+# vowel "e i o i u a a e"
+# crush "[6 5 7 6 7]%8"
+# cutoff (scale 150 1000 $ slow 3 sine)
+,
+slow 4
+$ chop 2
+-- $ sometimes (iter 8)
+-- $ striate 8
+-- $ stut 6 0.75 1.15
+$ n "2"
+# s "pad"
+# legato (scale 0.25 1.75 $ slow 4 sine)
+# vowel "[i o e i]/3"
+# crush "[[5 [8 5 [6 7] 4] [5 8 5]]]/13"
+# cutoff (scale 250 1200 $ sine)
+]
+
+d3 silence

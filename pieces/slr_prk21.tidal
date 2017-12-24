@@ -1,0 +1,47 @@
+-- slr_prk21.tidal
+--- by @jarxg
+--- created: 2017-12-22
+--- modified: 2017-12-22
+
+cps (130/60/4)
+
+hush
+
+d1
+$ stack [
+sometimes (jux rev) $ sometimes (iter 4) $ s "[srg:0(<5 9 10>,16,<2 7 9>), srg:4(<5 7 8>,16,<3 4 5>)]" # speed (scale 0 2 $ slow 3 sine)
+,
+jux rev
+-- $ sometimes (|-| n "12")
+-- $ sometimes (|-| n "24")
+-- $ sometimes (|+| n "12")
+-- $ sometimes (|+| n "24")
+-- $ (|+| n 7)
+$ n "[e3(3,16), g3(5,16), b4(1,16), [~ ~ ~ ~ ~ ~ b6 [e5 a5]]]" # s "supersaw supersquare <supersaw supersquare>"
+# legato (scale 0.5 1 $ slow 9 tri)
+# crush (scale 4 8 $ rand)
+# vowel "<i [o i]> [e <o i> u]"
+# cutoff (scale 2500 5500 $ slow 3 sine)
+# gain 0.75
+]
+# orbit 1
+# room 0.1
+# delay (scale 0.2 0.5 $ slow 5 sine)
+# delaytime "1/3"
+# delayfeedback (scale 0.25 0.5 $ slow 6 sine)
+
+d2
+$ stack [
+s "super808(4,8)" # cutoff 250 # gain 1.5,
+s "glitch:5(10,16)" # legato (scale 0.5 0.25 $ slow 9 sine)
+]
+
+t3 clutch
+-- $ jux rev
+-- $ sometimes (iter 4)
+$ s "amencutup(16,16)"
+# n (run 32)
+# legato (scale 0.25 0.75 $ rand)
+# gain 1.25
+
+d3 silence
