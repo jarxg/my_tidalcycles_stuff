@@ -1,0 +1,48 @@
+cps (135/60/4)
+
+hush
+
+t1 anticipate
+$ stack [
+s "cr8000:2(2,16)"
+-- ,
+-- s "cr8000:1(<2 2 3>,8,2)" # gain 1.5
+]
+# gain 0
+
+d1 silence
+
+t2 xfade
+-- $ sometimes (jux rev)
+$ sometimes palindrome
+-- $ sometimes (off 0.125 (|+| n "12"))
+-- $ rarely (off 0.25 (|+| n "24"))
+$ n "[e2(1,16) <e4(5,16) a5(3,16) g4(7,16) e3(3,16)>]"
+# s "[supersaw, <supersquare supersaw>]"
+# crush (scale 4 8 $ rand)
+# cutoff (scale 1200 2500 $ slow 7 sine)
+# orbit 1
+# room 0.1
+# delay 0.25
+# delaytime "1/3"
+# delayfeedback (scale 0 0.75 $ slow 3 sine)
+-- # pan rand
+# gain 0
+
+d3
+$ s "super808(0,8)"
+# cutoff 400
+# gain 2
+
+t4 clutch
+-- $ degrade
+$ sometimes (jux rev)
+$ sometimes (|+| n "2 4")
+$ sometimes (iter 4)
+$ n (irand 8)
+# s "kurt"
+# legato (scale 0.25 0.75 $ slow 9 sine)
+# speed (scale 0 2 $ slow 5 sine)
+# cutoff 250
+# orbit 1
+# gain 0
