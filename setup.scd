@@ -1,8 +1,8 @@
 // http://doc.sccode.org/Classes/ServerOptions.html
 
-s.options.numBuffers = 1024 * 16; // increase this if you need to load more samples
-s.options.memSize = 8192 * 16; // increase this if you get "alloc failed" messages
-s.options.maxNodes = 1024 * 32; // increase this if you are getting drop outs and the message "too many nodes"
+s.options.numBuffers = 1024 * 16; // + if + samples
+s.options.memSize = 8192 * 16; // + if "alloc failed"
+s.options.maxNodes = 1024 * 32; // + if drop outs and "too many nodes"
 
 ServerOptions.devices;
 
@@ -15,6 +15,8 @@ s.options.outDevice = "Scarlett 2i2 USB";
 s.boot;
 SuperDirt.start;
 s.quit;
+
+// latency
 
 s.latency = 0.3;
 

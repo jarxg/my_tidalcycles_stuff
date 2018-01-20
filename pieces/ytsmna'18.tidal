@@ -1,4 +1,4 @@
--- 20171126.tidal
+-- 20171126.tidal / ytsmna'18.tidal
 -- created: 2017-11-26
 -- modified: 2017-12-04
 -- by @jarxg
@@ -8,20 +8,17 @@ cps (88/60/4)
 hush
 
 t1 clutch
-$ degrade
 $ jux rev
-$ sometimes (|+| speed 1)
 $ n "[<0 31>, <5 2>]"
 # s "mdm"
-# begin (slow 8 sine)
-# attack 4 # decay 4 # sustain 4 # release 4
-# legato 1
-# speed (scale 0 2 $ slow 88 sine)
-# cutoff 500
+# adsr' 2 2 2 2
+# legato (scale 0 4 $ slow 11 sine)
+# speed (scale 0.5 2 $ slow 8 sine)
+# lpf' (scale 500 2000 $ slow 7 sine) 0
 
 d1 silence
 
-t2 (anticipateIn 31)
+d2
 $ degrade
 $ whenmod 9 2 (jux rev)
 $ sometimes (|+| speed 1)
@@ -32,11 +29,10 @@ $ n (irand 32)
 # speed (scale 0 1 $ slow 17 sine)
 # cutoff 500
 
-t3 (anticipateIn 16)
+d3
 $ stut 3 0.5 1.25
 $ jux rev
 $ s "super808(3,8)"
 # cutoff 400
-# gain 1.25
 
 d3 silence

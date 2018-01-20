@@ -1,8 +1,6 @@
--- 20171125.tidal
+-- 20171125.tidal / westqry.tidal
 -- created: 2017-11-25
--- modified: 2017-12-07
 -- by @jarxg
--- rendered: "SC_171125_044232.aiff"
 
 cps (145/60/4)
 
@@ -19,12 +17,13 @@ $ n (run 32)
 # legato (scale 0.01 0.09 $ slow 24 sine)
 -- # legato 0.25
 # speed (scale 0 2 $ slow 5 sine)
-# cutoff (scale 0 5 $ slow 25 sine)
+# cutoff (scale 1000 2500 $ slow 25 sine)
 # pan rand
+# stfu'
 
 d1 silence
 
-t2 clutch
+t2 (clutchIn 16)
 $ sometimes (jux (iter 32))
 $ whenmod 10 5 (|+| n "15")
 $ whenmod 7 3 (|+| n "25")
@@ -33,30 +32,30 @@ $ every 7 palindrome
 $ whenmod 9 3 (jux (rev))
 $ sometimes (|+| speed 2.5)
 $ stack [
-    s "glitch:5(3,8)",
-    s "[srg:3(5,8), srg:4(5,8)]",
-    s "<mdm:6 ~> mdm:1 mdm:5(3,8)",
-    s "{<~ mdm:7 ~> mdm:34 <<mdm:26 ~ mdm:15> <mdm:13 ~ mdm:2>}%8",
-    s "<~ mdm:14 ~> ~ mdm:0 < ~ <mdm:8 ~ mdm:22> ~>"
+s "glitch:5(3,8)",
+s "[srg:3(5,8), srg:4(5,8)]",
+s "<mdm:6 ~> mdm:1 mdm:5(3,8)",
+s "{<~ mdm:7 ~> mdm:34 <<mdm:26 ~ mdm:15> <mdm:13 ~ mdm:2>}%8",
+s "<~ mdm:14 ~> ~ mdm:0 < ~ <mdm:8 ~ mdm:22> ~>"
 ]
-# attack 8 # decay 16 # sustain 8 # release 16
+# adsr' 8 8 1 16
 -- # legato (scale 0.25 50 $ slow 10 sine)
 # speed (scale 0 1 $ slow 21 sine)
 # crush (scale 3 7 $ slow 8 sine)
-# cutoff (scale 0 5 $ slow 32 sine)
-# resonance (scale 0 0.25 $ slow 45 sine)
+# lpf' (scale 1000 2500 $ slow 32 sine) (scale 0 0.25 $ slow 45 sine)
+# stfu'
 
 d2 silence
 
 d3
 $ stack [
-    s "super808*4"
-        # cutoff 400
-        ,
-    s "superhat*16"
-        # legato (scale 0 1 $ rand)
-        # cutoff (scale 500 2500 $ slow 8 sine)
-        # pan rand
+s "super808(0,4)"
+# cutoff 400
+,
+s "superhat(11,16)"
+# legato (scale 0 1 $ rand)
+# cutoff (scale 500 2500 $ slow 8 sine)
+# pan rand
 ]
 
 d3 silence
