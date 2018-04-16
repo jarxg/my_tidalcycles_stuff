@@ -1,20 +1,18 @@
 -- by @jarxg
 
-cps (97/60/4)
+cps (120/60/4)
 
 hush
 
-d1
-$ fast 2
-$ every 4 (jux (|+| n "8"))
-$ sometimes (jux (|+| n "5"))
-$ stut 3 0.5 0.75
-$ n "<e4 a5> fs4 <a5 c5> b5 c5 a5 <fs4 e5> <e4 c4>"
-# s "superpiano"
+t1 xf16
+$ every 4 (off 0.125 (|+| n "12"))
+$ sometimes (off 0.25 (|+| n "24"))
+$ n "e2(3,8)"
+# s "<supersaw [superpiano supersquare]>"
 # coarse "[<2 5 4> 2] <4 [5 7]> [2 3 <4 3 8>]"
-# slow 4 (legato (sine / 4 + 0.1))
-# slow 6 (cutoff (sine * 1450 + 50))
-# gain "1"
+# lpf' (scale 500 2500 $ slow 19 sine) (scale 0 0.25 $ slow 15 sine)
+# legato (scale 0.25 0.75 $ slow 32 sine)
+# gain 1
 
 d2 silence
 
@@ -35,11 +33,11 @@ $ n "{<5 0> 5 <5 ~> <~ 2 5> <5 0 ~ 3> <5 ~> <~ 2 3> <5 3> <~ 1> <5 0 ~> <5 ~> <3
 d2 silence
 
 d4
-$ n "4*16"
-# s "808"
-# legato "0.15"
-# cutoff "[5000 2500 6000 [5000 2500 6000 4000] 4000]"
-# gain "1"
+$ stack [
+s "cr78:0(5,32)" # gain 2,
+s "cr78:1(2,4,2)" # gain 1.2,
+jux rev $ s "cr78:2(13,32)" # legato 0.25
+]
 
 d4 silence
 

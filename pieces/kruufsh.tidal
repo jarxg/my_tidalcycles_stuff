@@ -1,0 +1,10 @@
+cps (135/60/4)
+
+hush
+
+d1
+$ stack [
+sometimes (off 0.125 (# crush 6)) $ sometimes (withIn (scale 0.25 0.5 $ rand) (scale 0.5 0.75 $ rand) (# crush 3)) $ s "amencutup(13,16)" # n (run 16) 
+]
+
+d4 silence

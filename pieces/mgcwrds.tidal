@@ -1,13 +1,8 @@
--- 20171019.tidal / mgcwrds.tidal
--- created: 2017-10-19
--- modified: 2017-12-15
--- by @jarxg
-
 cps (135/60/4)
 
 hush
 
-t1 anticipate
+t1 clutch
 $ stack [
 sometimes (off "<0.125/2 0.125>" (|+| n "12"))
 $ sometimes (off 0.125 (|+| n "24"))
@@ -22,8 +17,8 @@ $ n "[c2(<1 5 3>,<8 16 32>), <d3(<3 7 5>,<8 16 8>) g3(<7 9>,16)>]"
 # orbit 1
 # dly' (scale 0.1 0.3 $ slow 16 sine) "1/3" (scale 0 0.5 $ slow 25 sine)
 # rvb' 0.2 0.1
-# stfu'
 ]
+# gain 0.5
 
 d1 silence
 
@@ -41,11 +36,10 @@ $ every 2 (jux rev)
 $ s "dr110:2(<7 9 6 11 9 10 9>,16,<0 3 4 5 1 2>)"
 ]
 # orbit 1
-# stfu'
 
 t3 clutch
 $ jux rev
-$ s "mdm(5,16)"
+$ s "glitch(5,16)"
 # n (irand 8)
 # legato (scale 0.5 1 $ slow 5 tri)
 # crush (scale 3 8 $ rand)

@@ -1,0 +1,39 @@
+cps (120/60/4)
+
+d1
+$ stack [
+-- s "emu:0(3,8)",
+-- s "emu:1(5,16,3)",
+-- jux rev $ s "emu:3(3,16,2)",
+-- sometimes palindrome $ jux rev $ s "emu:5(<5 3 4>,16,<3 2 7 5>)" # vowel "i e i u a" # legato (scale 0.1 0.9 $ rand) # crush (scale 3 7 $ rand) # lpf' (scale 1500 3500 $ rand) (scale 0 0.25 $ rand),
+-- s "cr8000:0(<4 4 4 5>,8)" # gain 2,
+-- rarely (jux rev) $ every 4 (stut 2 0.5 0.25) $ s "cr8000:1(2,4,2)" # gain 2,
+jux rev $ s "cr8000:2(7,16)" # legato 0.1
+]
+# alv'
+
+d2
+$ sometimes (iter 8)
+$ sometimes (fast 2)
+$ sometimes palindrome
+$ sometimes (off 0.125 (|+| n "12"))
+$ n "{0 3 5 8 12 19 24 12 19}%8"
+# s "[supersquare supersaw]"
+# legato 0.25
+# crush (scale 2 8 $ rand)
+# lpf' (scale 250 2500 $ rand) (scale 0 0.2 $ rand)
+# orbit 1
+# dly' 0.1 "1/3" 0.25
+# rvb' 0.1 0.1
+# gain 0.75
+# alv'
+
+t3 anticipate
+$ slow 2
+$ jux rev
+$ sometimes (iter 4)
+$ s "[djembe(<3 7 5>,<8 16 8>), congas(<7 9 11 [4 5]>,16), doumb(<5 9 7 10>,16)]"
+# n (irand 40)
+# lpf' (scale 3000 5000 $ slow 11 sine) 0
+# orbit 1 # dly' (scale 0.25 0.75 $ slow 3 sine) (scale 0.1 0.9 $ slow 5 sine) (scale 0.25 0.75 $ slow 7 sine)
+# alv'

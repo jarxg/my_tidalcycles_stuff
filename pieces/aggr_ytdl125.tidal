@@ -46,7 +46,7 @@ $ s "~"
 -- # cutoff (scale 500 1500 $ slow 17 sine)
 # cutoff (scale 1000 2000 $ slow 10 sine)
 
-t3 (anticipateIn 8)
+t3 clutch
 $ degrade
 $ n "5 ~ (5 5) ~ ~ ~ ~ (5 5)"
 # s "glitch"

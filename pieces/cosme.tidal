@@ -1,8 +1,3 @@
--- cosme.tidal
--- created: 2017-12-02
--- modified: 2018-01-10
--- by: @jarxg
-
 cps (145/60/4)
 
 hush
@@ -14,27 +9,44 @@ $ stack [
 # n (irand 8)
 # cutoff (scale 250 2500 $ slow 45 sine)
 ,
-s "tabla(5,8)"
+sometimes (jux rev) $ s "[tabla(5,16), djembe(7,32)"
 # n (irand 32)
 # vowel "{<i <i <o o u> a e> <e a i>}%16"
 # crush (scale 5 10 $ rand)
 # cutoff (scale 1250 4500 $ slow 7 sine)
+# alv'
 ,
 jux rev
 $ sometimes (iter 4)
-$ s "fone(11,32)"
+$ sometimes (jux rev)
+$ s "fone(17,32)"
 # legato 1
 # crush (scale 4 7 $ rand)
 # cutoff (scale 500 2500 $ slow 8 sine)
 ]
 # orbit 1
-# room (scale 0.25 0.75 $ slow 11 sine)
-# delay (scale 0.25 0.75 $ slow 9 saw)
-# delayfeedback (scale 0.25 0.75 $ slow 15 tri)
+# shape 0.7
+# rvb' (scale 0.05 0.2 $ slow 11 sine) 0.1
+# dly' (scale 0.25 0.75 $ slow 9 saw) "1/3" (scale 0.25 0.75 $ slow 15 tri)
+# alv'
+
+d1 silence
 
 d3 silence
 
-t2 (anticipateIn 11)
+d2
+$ sometimes (jux (off 0.25 (|+| n "12")))
+$ sometimes (off 0.125 (|+| n "12"))
+$ n "[g2(1,8), <g3(<7 3 5 3>,8) e4(<5 9 7>,16)>]"
+# s "supersaw"
+# crush (scale 4 8 $ rand)
+# lpf' (scale 200 1000 $ slow 11 tri) (scale 0 0.5 $ slow 7 sine)
+# legato (scale 1 2 $ slow 8 sine)
+# pan rand
+# orbit 1
+
+
+t2 clutch
 $ jux rev
 $ sometimes (slow 2)
 $ every 4 palindrome
@@ -45,25 +57,29 @@ n "0 ~ ~ 0",
 n "~ <~ (irand 8) ~> ~ <(irand 8) ~ (irand 8)>"
 -- n (irand 8)
 ]
-# s "[emu, srg, glitch, cr8000]"
+# s "srg"
 # legato (scale 0.1 0.9 $ slow 3 sine)
 # crush (scale 4 10 $ rand)
 # cutoff (scale 1000 5000 $ slow 4 sine)
 # hcutoff (scale 0 500 $ slow 9 sine)
-# orbit 2
-# room (scale 0 0.5 $ slow 17 sine)
-# delay (scale 0 0.75 $ slow 11 sine)
-# delaytime (scale 1 3 $ slow 19 sine)
-# delayfeedback (scale 0.25 0.5 $ slow 23 sine)
-# gain 0
+# orbit 0
+# gain 1
 
 d2 silence
 
-t3 (anticipateIn 8)
+d3
 $ stack [
--- sometimes (chop 4) $ every 3 (jux (gap 3)) $ sometimes (iter 8) $ sometimes (iter 5) $ every 4 (jux rev) $ n "0*4" # s "super808" # cutoff 300 # crush "3 <3 [1 1]> <1 3 3> <3 1 3>"
--- n "0(13,16)" # s "superhat" # cutoff (scale 1000 2500 $ slow 9 sine) # pan sine
+s "cr78:0(<3 5 3 2 5 4 3>,<8 16>)" # lpf' 250 0 # gain 2,
+s "cr78:1(2,4,2)" # lpf' 2500 0 # gain 1.5,
+jux rev $ s "cr78:2(7,16)" # legato 0.1 # gain 1.25
 ]
-# orbit 3
-# room 0.2
-# gain 1
+
+d1
+$ slow "<4 3 4 2 4>"
+$ every 8 (jux (stut 12 0.25 1.5))
+$ jux rev
+$ stack [
+  sometimes (striate 3) $ gap 3 $ s "print(3,17)" # legato 2 # speed (scale 0.5 1 $ slow 7 sine) # lpf' (scale 500 2500 $ slow 2 sine) (scale 0 0.5 $ slow 3 sine),
+  s "birds(5,19)" # adsr' 1 1 1 1 # speed (scale 0.75 1.25 $ slow 11 sine) # lpf' (scale 1000 2000 $ slow 3 sine) 0
+  ]
+# orbit 1

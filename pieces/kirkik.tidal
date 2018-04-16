@@ -1,29 +1,30 @@
-cps (130/60/4)
+ cps (130/60/4)
 
 hush
 
 d1 $ stack [
-  -- s "cr8000:0(4,8)" # gain 1.75,
-  s "dr110:0(5,16,2)",
-  s "cr8000:2(3,8)" # legato 0.2
+  -- s "cr8000:0(<4 4 3 4 4 5>,8)" # gain 1.75,
+  -- s "dr110:1(2,4,2)" # gain 1.5,
+  sometimes (jux rev) $ s "cr8000:2(7,16)" # legato 0.2
 ] 
-# orbit 0
-# room 0
 
-d2 silence
+d1 silence
 
 t2 clutch $ stack [
   sometimes (off 0.125 (|+| n "12"))
-  $ sometimes (off 0.25 (|+| n "12"))
+  $ sometimes (off 0.25 (|+| n "24"))
   $ n "[e2(3,8), e3(2,6)]"
-  # s "supersaw"
+  # s "supersaw supersquare"
   # cutoff (scale 150 250 $ slow 4 tri)
   ]
-# legato (scale 0.1 0.5 $ slow 11 sine)
+# legato (scale 0.25 0.75 $ slow 11 sine)
 # orbit 1
-# room 0.1
-# delay 0.2
-# delaytime (scale 0.25 0.75 $ slow 7 sine)
-# delayfeedback (scale 0.25 0.75 $ slow 5 sine)
+# cutoff (scale 200 1000 $ slow 9 sine)
+# room 0.1
+# delay 0.2
+# delaytime "1/3"
+# delayfeedback 0.5
 
-d3 $ slow 8 $ s "birds(5,16)" # n (irand 8) # speed (scale 0 1 $ slow 12 sine) # orbit 1
+d2 silence
+
+d3 $ slow 8 $ striate 6 $ chop 3 $ sometimes (iter 7) $ jux rev $ s "birds(5,16)" # n (irand 8) # speed (scale 0 1 $ slow 12 sine) # cutoff (scale 10 200 $ slow 7 sine) # gain 0

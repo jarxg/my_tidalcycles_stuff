@@ -1,0 +1,163 @@
+:set -XOverloadedStrings
+:set prompt ""
+:module Sound.Tidal.Context
+
+(cps, nudger, getNow) <- cpsUtils'
+
+(c1,ct1) <- dirtSetters getNow
+(c2,ct2) <- dirtSetters getNow
+(c3,ct3) <- dirtSetters getNow
+(c4,ct4) <- dirtSetters getNow
+(c5,ct5) <- dirtSetters getNow
+(c6,ct6) <- dirtSetters getNow
+(c7,ct7) <- dirtSetters getNow
+(c8,ct8) <- dirtSetters getNow
+(c9,ct9) <- dirtSetters getNow
+
+(d1,t1) <- superDirtSetters getNow
+(d2,t2) <- superDirtSetters getNow
+(d3,t3) <- superDirtSetters getNow
+(d4,t4) <- superDirtSetters getNow
+(d5,t5) <- superDirtSetters getNow
+(d6,t6) <- superDirtSetters getNow
+(d7,t7) <- superDirtSetters getNow
+(d8,t8) <- superDirtSetters getNow
+(d9,t9) <- superDirtSetters getNow
+
+
+let bps x = cps (x/2)
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,c1,c2,c3,c4,c5,c6,c7,c8,c9]
+let solo = (>>) hush
+
+:set prompt "tidal> "
+
+
+let -- fx
+    adsr' a d s r = attack a # decay d # sustain s # release r
+    dly' l t f  = delay l # delaytime t # delayfeedback f
+    gco' g c o  = gain g # cut c # orbit o
+    scc' s c c' = shape s # coarse c # crush c'
+    lpf' c r = cutoff c # resonance r
+    bpf' f q = bandf f # bandq q
+    hpf' c r = hcutoff c # hresonance r
+    spa' s a = speed s # accelerate a
+    rvb' r s = room r # size s
+    io' i o  = begin i # end o
+    trem' r d = tremolorate r # tremolodepth d
+    phsr' r d = phaserrate r # phaserdepth  d
+    alv'  = gain 0
+    -- sequence generators
+    r = run
+    ri a = rev (r a) -- run inverted
+    c = choose
+    odd    a = (((r a) + 1) * 2) - 1 -- run of odd numbers
+    even   a =  ((r a) + 1) * 2 -- run of even numbers
+    codd   a = c (patToList (odd   a)) -- choose odd
+    ceven  a = c (patToList (even  a)) -- choose even
+    oddi   a = rev (odd a) -- odd inverted
+    eveni  a = rev (even a) -- even inverted
+    coddi  a = rev (codd a) -- choose odd inverted
+    ceveni a = rev (ceven a) -- choose even inverted
+    -- transitions
+    j n  = jumpIn' n
+    j2   = jumpIn' 2
+    j4   = jumpIn' 4
+    j8   = jumpIn' 8
+    j16  = jumpIn' 16
+    xf n = xfadeIn  n
+    xf2  = xfadeIn  2
+    xf4  = xfadeIn  4
+    xf8  = xfadeIn  8
+    xf16 = xfadeIn  16
+    cl n = clutchIn n
+    cl2  = clutchIn 2
+    cl4  = clutchIn 4
+    cl8  = clutchIn 8
+    cl16 = clutchIn 16
+    swash = superwash
+    -- math/signal functions
+    sin = sine
+    cos = cosine
+    sq  = square
+    pulse w = sig $ \t -> if ((snd $ properFraction t) >= w) then 1.0 else 0.0
+    pulse' w = liftA2 (\a b -> if (a>=b) then 1.0 else 0.0) saw w
+    pw = pulse
+    pw' = pulse'
+    scale' from to p = (p*to - p*from) + from
+    sc' = scale'
+    sc  = scale
+    scx = scalex
+    sinf  f = fast f $ sin    -- sine at freq
+    cosf  f = fast f $ cos    -- cosine at freq
+    trif  f = fast f $ tri    -- triangle at freq
+    sawf  f = fast f $ saw   -- saw at freq
+    sqf   f = fast f $ sq     -- square at freq
+    pwf w f = fast f $ pw w -- pulse at freq
+    pwf' w f = fast f $ pw' w -- pulse' at freq
+    randf f = fast f $ rand   -- rand at freq
+    ssin  i o = sc  i o sin   -- scaled sine
+    scos  i o = sc  i o cos   -- scaled cosine
+    stri  i o = sc  i o tri   -- scaled triangle
+    ssaw i o = sc  i o saw   -- scaled saw
+    ssq   i o = sc  i o sq    -- scaled square
+    spw i o w = sc i o pw w -- scaled pulse
+    spw' i o w = sc i o pw' w -- scaled pulse'
+    srand i o = sc  i o rand  -- scaled rand
+    sxsin i o = scx i o sin   -- scaled exponential sine
+    sxcos i o = scx i o cos   -- scaled exponential cosine
+    sxtri i o = scx i o tri   -- scaled exponential triangle
+    sxsaw i o = scx i o saw  -- scaled exponential saw
+    sxsq  i o = scx i o sq    -- scaled exponential sqaure
+    sxpw i o w = scx i o pw w -- scaled exponential pulse
+    sxpw' i o w = scx i o pw' w -- scaled exponential pulse'
+    sxrand i o = scx i o rand -- scaled exponential rand
+    ssinf   i o f = fast f $ ssin   i o  -- scaled sine at freq
+    scosf   i o f = fast f $ scos   i o  -- scaled cosine at freq
+    strif   i o f = fast f $ stri   i o  -- scaled triangle at freq
+    ssawf  i o f = fast f $ ssaw   i o  -- scaled saw at freq
+    ssqf    i o f = fast f $ ssq    i o  -- scaled square at freq
+    spwf i o w f = fast f $ spw i o w -- scaled pulse at freq
+    srandf  i o f = fast f $ srand  i o  -- scaled rand at freq
+    sxsinf  i o f = fast f $ sxsin  i o  -- scaled exponential sine at freq
+    sxcosf  i o f = fast f $ sxcos  i o  -- scaled exponential cosine at freq
+    sxtrif  i o f = fast f $ sxtri  i o  -- scaled exponential triangle at freq
+    sxsawf  i o f = fast f $ sxsaw i o  -- scaled exponential saw at freq
+    sxsqf   i o f = fast f $ sxsq   i o  -- scaled exponential square at freq
+    sxpwf i o w f = fast f $ sxpw i o w -- scaled exponential pulse at freq
+    sxpwf' i o w f = fast f $ sxpw' i o w -- scaled exponential pulse' at freq
+    sxrandf i o f = fast f $ sxrand i o  -- scaled exponential random at freq
+    ssin'  i o = sc'  i o sin  -- scaled' sine
+    scos'  i o = sc'  i o cos  -- scaled' cosine
+    stri'  i o = sc'  i o tri  -- scaled' triangle
+    ssaw' i o = sc'  i o saw  -- scaled' saw
+    ssq'   i o = sc'  i o sq   -- scaled' square
+    srand' i o = sc' i o rand  -- scaled' rand
+    ssinf' i o f = fast f $ ssin'   i o -- scaled' sine at freq
+    scosf' i o f = fast f $ scos'   i o -- scaled' cosine at freq
+    strif' i o f = fast f $ stri'   i o -- scaled' triangle at freq
+    ssawf' i o f = fast f $ ssaw'  i o -- scaled' saw at freq
+    ssqf'   i o f = fast f $ ssq'   i o -- scaled' square at freq
+    srandf' i o f = fast f $ srand' i o -- scaled' rand at freq
+    -- extreme mode
+    str = striate
+    strL = striateL
+    str' = striate'
+    strL' = striateL'
+    fE = foldEvery
+    ev = every
+    oa = offadd
+    sp = speed
+    ac = accelerate
+    sl = slow
+    fa = fast
+    i = id
+    g = gain
+    o = orbit
+    u = up
+    (>) = (#)
+    deg = degrade
+    degBy = degradeBy
+    disc = discretise
+    --more
+    half = slow 2
+    double = fast 2

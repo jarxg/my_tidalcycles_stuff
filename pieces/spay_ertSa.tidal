@@ -13,7 +13,7 @@ n "{3 2 6}%4"
 # s "kurt"
 # lpf' (scale 500 4500 $ slow 3 tri) (scale 0 0.5 $ slow 5 sine)
 # speed (scale 0 2 $ slow 11 sine)
-# stfu'
+# gain 0.5
 ,
 sometimes (off "<0.125/2 0.125>" (|+| n "12"))
 $ jux rev
@@ -28,26 +28,29 @@ $ n "[c3(<3 5 2>,<8 16>), <a4(3,8) g4(5,16)>]"
 
 d1 silence
 
-t4 anticipate
+t2 clutch
 $ slow 2
 $ every 3 (slow 2)
 $ every 3 palindrome
+$ sometimes (slow 4)
+$ sometimes (jux (iter 7))
 $ sometimes (striate 2)
 $ every 2 (jux rev)
 $ sometimes (jux (stut 4 0.5 0.75))
 $ sometimes (off 0.125 (|+| n "12"))
 $ sometimes (off "<0.125/2 0.125>" (|+| n "24"))
 $ sometimes (stut 3 0.25 1.5)
--- $ n "c3 [c3, <b5 g5>]"
--- $ n "[c3, <c5 d6>] [<c3 c5 d4>, <<b5 g5 d4> <g5 d4>>]"
-$ n "[c3, <[c5 g5] [d6 g5]>] [<c3 c5>, <[b5 g5] [d4 g5]>]"
--- $ n "[g3, <[b5 d5] [<d6 g6> g5]>] [<d3 d5>, <[g5 a5] [<a4 a5> <g5 g6 g7>]>]"
-# s "superpiano"
+$ slowcat [
+  n "c3 [c3, <b5 g5>]",
+  n "[c3, <c5 d6>] [<c3 c5 d4>, <<b5 g5 d4> <g5 d4>>]",
+  n "[c3, <[c5 g5] [d6 g5]>] [<c3 c5>, <[b5 g5] [d4 g5]>]",
+  n "[g3, <[b5 d5] [<d6 g6> g5]>] [<d3 d5>, <[g5 a5] [<a4 a5> <g5 g6 g7>]>]"
+]
+# s "[superpiano, supermandolin]"
 # crush (scale 5 10 $ rand)
 # cutoff (scale 500 1500 $ slow 11 sine)
 # orbit 1
 # dly' (scale 0.1 0.3 $ slow 16 sine) "1/3" (scale 0 0.5 $ slow 25 sine)
 # rvb' 0.2 0.1
-# stfu'
 
-d4 silence
+d2 silence

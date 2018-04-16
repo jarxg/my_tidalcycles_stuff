@@ -3,18 +3,20 @@
 -- modified: 2017-12-19
 -- by @jarxg
 
-cps (135/60/4)
+cps (145/60/4)
 
 hush
 
-t1 anticipate
+t1 clutch
 $ sometimes (|+| n 12)
 $ sometimes (jux (iter 4))
-$ n "[g3(0,8), b4(0,8,1)]"
-# s "supersaw"
+$ sometimes (jux rev)
+$ every 4 (jux (striate 2))
+$ s "[alphabet(1,8), numbers(3,8,1)]"
+# n (irand 8)
 # legato (scale 0.25 1.75 $ slow 7 sine)
 # crush (scale 3 8 $ rand)
-# cutoff (scale 500 4500 $ slow 5 sine)
+# lpf' (scale 50 450 $ slow 5 sine) (scale 0 200 $ slow 3 sine)
 # orbit 1
 # room 0.1
 # delay 0.25
@@ -23,14 +25,23 @@ $ n "[g3(0,8), b4(0,8,1)]"
 
 d1 silence
 
+d4
+$ stack [
+s "gabba(0,8)" # cutoff 2400 # gain 2,
+s "cr78:1(2,4,2)" # cutoff 2700 # orbit 1 # gain 1.5,
+jux rev $ s "cr78:2(11,16)" # legato 0.2
+]
+# alv'
+
 d2
-$ s "[cr78:0(10,16), jazz:7(7,16), jazz:6(3,8,2)]"
-# cutoff 4250
-# gain 1.5
+$ s "[cr78:0(0,16), jazz:7(13,16), jazz:6(0,8,2)]"
+# lpf' (scale 500 2000 $ slow 7 sine) 0
+# hpf' (scale 0 500 $ slow 5 sine) 0
+# gain 1.75
 
 d2 silence
 
-t3 clutch
+t1 clutch
 $ sometimes (iter 4)
 $ sometimes (off 0.125 (|+| n 24))
 $ stack [
@@ -41,7 +52,7 @@ $ n "{0 1 3 2 0}%4"
 # s "glitch"
 # vowel "e i o i u a a e"
 # crush "[6 5 7 6 7]%8"
-# cutoff (scale 150 1000 $ slow 3 sine)
+# cutoff (scale 50 100 $ slow 3 sine)
 ,
 slow 4
 $ chop 2
@@ -53,7 +64,8 @@ $ n "2"
 # legato (scale 0.25 1.75 $ slow 4 sine)
 # vowel "[i o e i]/3"
 # crush "[[5 [8 5 [6 7] 4] [5 8 5]]]/13"
-# cutoff (scale 250 1200 $ sine)
+# cutoff (scale 50 100 $ sine)
 ]
+# alv'
 
-d3 silence
+d1 silence

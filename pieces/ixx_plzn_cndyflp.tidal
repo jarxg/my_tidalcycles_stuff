@@ -1,11 +1,8 @@
--- ixx_plzn_cndyflp.tidal
--- created: 2017-11-10
-
 cps (145/60/4)
 
 hush
 
-d1
+t1 clutch
 $ stack [
 sometimes (jux (iter 4)) $ sometimes (stut 4 0.25 0.5) $ rarely (|-| crush (irand 4)) $ sometimes (jux rev) $ s "emu(5,16)"
 # legato (scale 0.25 1.5 $ slow 4 tri) # speed (scale 1 1.5 $ slow 3 sine) # crush 7 # cutoff 4500 # gain 1.5,
@@ -15,33 +12,25 @@ s "supersnare(0,4,2)" # cutoff 4500 # speed 3 # gain 1.35
 
 d1 silence
 
-t2 anticipate
+t2 clutch
 $ sometimes (# speed 2)
 $ sometimes (# speed 0.5)
 $ sometimes (jux (# speed 4))
 $ sometimes (jux rev)
 $ every 4 (jux (gap 2))
 $ rarely (jux (stut 4 0.25 0.25))
-$ s "[glitch:5(0,16,3)], mdm:2(0,16,2)"
-# attack 4
-# decay 4
-# sustain 4
-# release 4
+$ s "[glitch:5(<5 7>,16,<3 4 2>)], glitch:0(3,16,2)"
 # speed (scale 0.5 2 $ rand)
-# crush (scale 5 8 $ sine)
+# crush (scale 3 8 $ sine)
 # cutoff (scale 2500 5500 $ slow 7 sine)
 # pan rand
-# gain 0.75
 # orbit 1
-# room 0.1
-# delay 0.1
-# delaytime 1
-# delayfeedback 0.25
+# rvb' 0.1 0.1
 
 d2 silence
 
 t3 clutch
-$ chop 4 $ slow 8 $ jux rev $ stut 3 0.5 1.25 $ striate 2 $ s "[print(0,16), mdm(0,8)]"
+$ chop 4 $ slow 8 $ jux rev $ stut 3 0.5 1.25 $ striate 2 $ s "print(0,16)"
 # n (irand 16)
 # cutoff (scale 500 2500 $ slow 8 sine)
 
@@ -49,7 +38,7 @@ d3 silence
 
 d3 $
 slow 4 $ jux rev $ n "[<[g3(3,8)] a2> d2(5,8), c4(7,16)]"
-# s "supersaw" # legato 1 # slow 6 (legato (scale 5 10 $ slow 10 sine)) # slow 8 (crush (scale 2 5 $ sine)) # slow 4 (cutoff (scale 5 150 $ slow 7 sine)) # gain 0.4
+# s "[supersaw, supersquare]" # legato 1 # slow 6 (legato (scale 5 10 $ slow 10 sine)) # slow 8 (crush (scale 2 5 $ sine)) # slow 4 (lpf' (scale 5 150 $ slow 7 sine) 0) # gain 0.75
 
 d3 silence
 

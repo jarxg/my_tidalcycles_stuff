@@ -42,8 +42,6 @@ $ stack [
         $ n "<[e3(3,8)] e2> d2(5,8)"
         # s "supersaw"
         -- # legato 1
-        # slow 6 (legato (scale 5 10 sine / 10))
-        # slow 8 (crush (scale 4 8 sine))
         -- # cutoff 5500
         # slow 4 (cutoff (scale 500 5500 sine)),
     jux rev

@@ -8,8 +8,9 @@ cps (125/60/4)
 hush
 
 d1
+$ sometimes (off 0.125 (|+| n "12))
 $ stack [
-    $ n "[c2(11,16), e3(3,8)]"
+    n "[c2(11,16), e3(3,8)]"
         # s "supersaw"
         # legato 1
         # vowel "i o [i e]"
@@ -23,19 +24,19 @@ $ stack [
         # cutoff (scale 150 1500 $ slow 7 sine)
 ]
 
-t2 (anticipateIn 4)
-$ s "super808*4"
-# legato 1
-# cutoff 350
-# gain 1.5
-
 d2
+$ s "[cr78:0(5,8), cr78:1(2,4,2)]"
+# legato 1
+# cutoff 2500
+# gain 2
+
+d3
 $ jux rev
 $ striate 8
-$ s "breaks125"
+$ s "amencutup"
 # legato 1
 
-d2 silence
+d3 silence
 
 d3
 $ jux rev
