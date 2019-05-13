@@ -55,11 +55,8 @@
      tidal-interpreter-arguments)
     (tidal-see-output))
   (tidal-send-string ":set prompt \"\"")
-  (tidal-send-string ":set prompt2 \"\"")
   (tidal-send-string ":module Sound.Tidal.Context")
-  (tidal-send-string "import qualified Sound.Tidal.Scales as Scales")
-  (tidal-send-string "import qualified Sound.Tidal.Chords as Chords")
-  (tidal-send-string "(cps, nudger, getNow) <- cpsUtils'")
+  (tidal-send-string "(cps, getNow) <- bpsUtils")
   (tidal-send-string "(d1,t1) <- superDirtSetters getNow")
   (tidal-send-string "(d2,t2) <- superDirtSetters getNow")
   (tidal-send-string "(d3,t3) <- superDirtSetters getNow")
@@ -144,9 +141,9 @@
   (interactive)
   (tidal-send-string "now' <- getNow")
   (tidal-send-string "let now = nextSam now'")
-  (tidal-send-string "let retrig = (now `rotR`)")
-  (tidal-send-string "let fadeOut n = spread' (_degradeBy) (retrig $ slow n $ envL)")
-  (tidal-send-string "let fadeIn n = spread' (_degradeBy) (retrig $ slow n $ (1-) <$> envL)")
+  (tidal-send-string "let retrig = (now ~>)")
+  (tidal-send-string "let fadeOut n = spread' (degradeBy) (retrig $ slow n $ envL)")
+  (tidal-send-string "let fadeIn n = spread' (degradeBy) (retrig $ slow n $ (1-) <$> envL)")
 
   )
 
@@ -164,32 +161,25 @@
   (next-line)
   )
 
-(defun tidal-eval-multiple-lines ()
-  "Eval the current region in the interpreter as a single line."
-  (tidal-get-now)
-  (mark-paragraph)
-  (let* ((s (buffer-substring-no-properties (region-beginning)
-                                            (region-end)))
-         (s* (if tidal-literate-p
-                 (tidal-unlit s)
-               s)))
-    (tidal-send-string ":{")
-    (tidal-send-string s*)
-    (tidal-send-string ":}")
-    (mark-paragraph)
-    (pulse-momentary-highlight-region (mark) (point))
-    )
-  )
-
 (defun tidal-run-multiple-lines ()
   "Send the current region to the interpreter as a single line."
   (interactive)
-  (if (>= emacs-major-version 25)
-      (save-mark-and-excursion
-       (tidal-eval-multiple-lines))
-    (save-excursion
-     (tidal-eval-multiple-lines))
-    )
+  (tidal-get-now)
+  (save-excursion
+   (mark-paragraph)
+   (let* ((s (buffer-substring-no-properties (region-beginning)
+                                             (region-end)))
+          (s* (if tidal-literate-p
+                  (tidal-unlit s)
+                s)))
+     (tidal-send-string ":{")
+     (tidal-send-string s*)
+     (tidal-send-string ":}")
+     (mark-paragraph)
+     (pulse-momentary-highlight-region (mark) (point))
+     )
+    ;(tidal-send-string (replace-regexp-in-string "\n" " " s*))
+   )
   )
 
 (defun tidal-run-d1 ()

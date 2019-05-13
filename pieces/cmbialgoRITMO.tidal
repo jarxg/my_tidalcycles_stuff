@@ -1,16 +1,13 @@
 cps (150/60/4)
 
-d1 $ stack [
+p "uno" $ stack [
 fast 2 $ s "cr8000:3 ~ cr8000:3 cr8000:3",
 jux rev $ s "cr8000:2(11,16)" # legato 0.25,
 s "cr8000:12(2,4)"
 ]
 
-d2
-$ half
+p "dos" $ half
 $ n "a2 [c3 e3] e2 [g2 b3]"
 # s "[supersaw <supersquare supersaw>]"
 # legato 0.75
 # lpf' (scale 500 1500 $ slow 3 sine) (scale 0 0.1 $ slow 5 sine)
-
-d3

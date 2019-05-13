@@ -7,44 +7,20 @@ cps (125/60/4)
 
 hush
 
-t1 clutch
-$ stack [
-sometimes (iter 4)
-$ s "[cr78:0(0,16), jazz:7(7,16)"
-# speed (scale 0.9 1.1 $ slow 3 sine)
-,
-sometimes (jux rev)
-$ s "[emu:0(3,16)]"
-# legato (scale 0.75 2.5 $ slow 3 sine)
-# crush 7
-]
-# cutoff (scale 2000 5000 $ slow 9 sine)
-# gain 1.25
+d1 $ sometimes (jux rev) $ s "[cr78:0(7,16), cr78:2(7,16)]" # rvb' 0.1 0.5 # dly' 0.2 "1/3" 0.4
 
-d2
-$ stack [
-s "super808(0,8)" # cutoff 550
-,
-s "superhat(11,16)" # cutoff (scale 200 1500 $ rand)
-]
-# gain 0.75
+t2 anticipate $ stack [ sometimes (jux rev) $ s "super808(5,8)" # cutoff 50, s "superhat(11,16)" # cutoff (scale 200 1500 $ rand)] # gain 0
 
-d2 silence
-
-d2 silence
-
-t2 clutch
-$ degrade
+d3 $ degrade
 $ sometimes (|+| speed 1 )
 $ sometimes (|-| speed 1 )
 $ sometimes (iter 4)
 $ jux rev
-$ s "~"
+$ s "alphabet"
 # n (irand 24)
--- # legato (scale 0.1 0.9 $ slow 25 sine)
--- # speed (scale 0 1 $ slow 14 sine)
--- # cutoff (scale 500 1500 $ slow 17 sine)
-# cutoff (scale 1000 2000 $ slow 10 sine)
+# legato (scale 0.1 0.9 $ slow 25 sine)
+# speed (scale 0.5 1 $ rand)
+# cutoff (scale 500 1500 $ slow 17 sine)
 
 t3 clutch
 $ degrade
